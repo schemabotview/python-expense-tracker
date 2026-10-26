@@ -11,8 +11,9 @@ script to a tested, packaged CLI and web API, in real, executed code. A **sectio
 **`COURSE-PLAN.md` is the source of truth**: courses, sections, the app's growth, each side-pane
 diagram, and the packaging (one video). Author from it; change it first, never drift from it.
 
-Engine `@graphlearning/graphl-flow` (^0.2.0), shell `@graphlearning/shell` (^1.0.1), both published
-and pinned. Sister repo: **python-ct**, which has the same course design on a data pipeline.
+Engine `@graphlearning/graphl-flow` (^0.3.0), shell `@graphlearning/shell` (^1.0.1), both published
+and pinned. Shell 1.0.2 (peer `^0.3.0`) is not on npm yet, so `package.json` `overrides` lets 1.0.1
+take engine 0.3.0 (no API change); when 1.0.2 is published, pin `^1.0.2` and drop the override. Sister repo: **python-ct**, which has the same course design on a data pipeline.
 Port its infra; do not reinvent it.
 
 ## Status
@@ -63,8 +64,9 @@ fixed side pane. **Every IDE side pane carries a diagram** (memory, stack, flow,
 result table), not a bullet list. No edges between panes. A detour (◆) is a side-pane diagram when it
 pictures the code on screen, and a full concept scene (its own section, real output inside it) when
 it is a canonical big picture that cannot fit the side pane at ≥ 24px; see `COURSE-PLAN.md`. Concept scenes are authored wide for 16:9.
-python-ct's authoring notes (no obstacle avoidance, ≤ 2 arrows into one node across a gap, valid
-icon keys) apply as written.
+python-ct's authoring notes apply (no obstacle avoidance, valid icon keys). On engine 0.3 a fan-in of
+3+ arrows no longer flips a head, but heads on one face must sit ≥ 10px apart (check-render fails it):
+aim a fan-in at a TALL node.
 
 ## Checks, before handing over
 

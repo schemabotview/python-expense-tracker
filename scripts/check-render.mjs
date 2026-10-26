@@ -153,6 +153,20 @@ try {
             out.push(`${tag} runs through the heading of '${owner?.dataset.id ?? 'the scene'}'`)
         }
       }
+      // Arrowheads on ONE face sit >= 10px apart (graphl-flow 0.3's HEAD_LEN): ports spread within a
+      // face, and several arrows into a one-line card land in one blob (graphl-flow's `check`).
+      const heads = new Map()
+      for (const e of paths) {
+        const z = node(e.dataset.to), end = pts(e).at(-1)
+        if (!z) continue
+        const r = R(z), face = Math.abs(end.x - (r.x - 4)) < 0.01 ? 'l' : Math.abs(end.x - (r.x + r.w + 4)) < 0.01 ? 'r' : Math.abs(end.y - (r.y - 4)) < 0.01 ? 't' : 'b'
+        const key = `${e.dataset.to}:${face}`
+        heads.set(key, [...(heads.get(key) ?? []), face === 'l' || face === 'r' ? end.y : end.x])
+      }
+      for (const [key, at] of heads) {
+        const sorted = [...at].sort((a, b) => a - b)
+        if (sorted.some((v, i) => i && v - sorted[i - 1] < 10)) out.push(`arrowheads crowd on ${key.replace(':', "'s face ")} — aim the fan-in at a taller node`)
+      }
       const ls = [...document.querySelectorAll('.gf-edge-label')]
       const hit = (a, b) => a.left < b.right && b.left < a.right && a.top < b.bottom && b.top < a.bottom
       const lr = ls.map((l) => l.getBoundingClientRect())

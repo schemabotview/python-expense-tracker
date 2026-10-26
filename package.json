@@ -23,7 +23,7 @@
     "shots": "node scripts/shots.mjs"
   },
   "dependencies": {
-    "@graphlearning/graphl-flow": "^0.2.0",
+    "@graphlearning/graphl-flow": "^0.3.0",
     "@graphlearning/shell": "^1.0.1",
     "lucide-react": "^1.28.0",
     "react": "^19.2.0",
@@ -38,5 +38,10 @@
     "puppeteer": "^25.3.0",
     "typescript": "~5.7.2",
     "vite": "^6.0.5"
+  },
+  "overrides": {
+    "@graphlearning/shell": {
+      "@graphlearning/graphl-flow": "$@graphlearning/graphl-flow"
+    }
   }
 }
