@@ -1,0 +1,12 @@
+$ python -q -i main.py
+expense> quit
+>>> rows = bank_rows()
+>>> rows
+<generator object bank_rows at 0x7fcdc5698150>
+>>> next(rows)
+('bank-2026-09.csv', 2, {'date': '2026-09-05', 'description': 'CAFÉ MÜLLER', 'amount': '8.40', 'currency': 'GBP'})
+>>> next(rows)[:2]
+('bank-2026-09.csv', 3)
+>>> sum(1 for _ in rows)
+15
+>>> exit()

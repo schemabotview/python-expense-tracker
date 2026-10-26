@@ -1,0 +1,122 @@
+[
+  {
+    "date": "2026-10-01",
+    "description": "Café Lumen",
+    "amount": "4.50",
+    "category": "food"
+  },
+  {
+    "date": "2026-10-01",
+    "description": "Noodle Bar",
+    "amount": "12.99",
+    "category": "food"
+  },
+  {
+    "date": "2026-10-01",
+    "description": "Metro",
+    "amount": "2.80",
+    "category": "transport"
+  },
+  {
+    "date": "2026-10-02",
+    "description": "Cinema Nova",
+    "amount": "11.50",
+    "category": "fun"
+  },
+  {
+    "date": "2026-10-03",
+    "description": "Corner Market",
+    "amount": "46.20",
+    "category": "food"
+  },
+  {
+    "date": "2026-10-04",
+    "description": "Train to Porto",
+    "amount": "68.40",
+    "category": "transport"
+  },
+  {
+    "date": "2026-10-05",
+    "description": "Concert tickets",
+    "amount": "64.00",
+    "category": "fun"
+  },
+  {
+    "date": "2026-10-06",
+    "description": "snacks",
+    "amount": "9.80",
+    "category": "fun"
+  },
+  {
+    "date": "2026-09-05",
+    "description": "CAFÉ MÜLLER",
+    "amount": "8.40",
+    "category": "other"
+  },
+  {
+    "date": "2026-09-09",
+    "description": "NETFLIX.COM",
+    "amount": "10.99",
+    "category": "other"
+  },
+  {
+    "date": "2026-09-15",
+    "description": "THAMES WATER",
+    "amount": "32.40",
+    "category": "other"
+  },
+  {
+    "date": "2026-09-20",
+    "description": "TESCO STORES 2041",
+    "amount": "41.10",
+    "category": "other"
+  },
+  {
+    "date": "2026-09-28",
+    "description": "TFL TRAVEL CH",
+    "amount": "5.60",
+    "category": "other"
+  },
+  {
+    "date": "2026-10-06",
+    "description": "TESCO STORES 2041",
+    "amount": "23.85",
+    "category": "other"
+  },
+  {
+    "date": "2026-10-06",
+    "description": "TFL TRAVEL CH",
+    "amount": "2.80",
+    "category": "other"
+  },
+  {
+    "date": "2026-10-07",
+    "description": "AMZN MKTP UK*2K4",
+    "amount": "15.99",
+    "category": "other"
+  },
+  {
+    "date": "2026-10-08",
+    "description": "PRET A MANGER",
+    "amount": "6.45",
+    "category": "other"
+  },
+  {
+    "date": "2026-10-09",
+    "description": "NETFLIX.COM",
+    "amount": "10.99",
+    "category": "other"
+  },
+  {
+    "date": "2026-10-10",
+    "description": "TFL TRAVEL CH",
+    "amount": "2.80",
+    "category": "other"
+  },
+  {
+    "date": "2026-10-15",
+    "description": "THAMES WATER",
+    "amount": "32.40",
+    "category": "other"
+  }
+]

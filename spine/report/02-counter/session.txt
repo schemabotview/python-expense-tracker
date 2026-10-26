@@ -1,0 +1,13 @@
+$ python main.py
+expense> report
+food: on track, 156.51 left
+transport: over budget by 2.40
+fun: over budget by 47.28
+rent: on track, 950 left
+bills: on track, 55.20 left
+shopping: on track, 84.01 left
+expense> payees
+TFL TRAVEL CH: 3 times
+NETFLIX.COM: 2 times
+THAMES WATER: 2 times
+expense> quit

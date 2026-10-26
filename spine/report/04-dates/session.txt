@@ -1,0 +1,11 @@
+$ python -q
+>>> from datetime import date, timedelta
+>>> date(2026, 10, 16) - timedelta(days=30)
+datetime.date(2026, 9, 16)
+>>> (date(2026, 10, 9) - date(2026, 9, 9)).days
+30
+>>> exit()
+$ python main.py
+expense> recent 7
+2 expenses, 35.20 in 7 days
+expense> quit

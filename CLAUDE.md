@@ -29,7 +29,7 @@ awaiting owner review; no audio yet. The app map (1.2, 7.4) is built with Course
 | 3 | `hold` | 9 | authored; no audio yet |
 | 4 | `decide` | 11 | authored; no audio yet |
 | 5 | `save` | 6 | authored; no audio yet |
-| 6 | `report` | 7 | not started |
+| 6 | `report` | 7 | authored; no audio yet |
 | 7 | `command` | 4 | not started |
 | 8 | `model` | 9 | not started |
 | 9 | `trust` | 6 | not started |

@@ -183,7 +183,10 @@ def replay(step: Path) -> tuple[str, dict[str, str]]:
 def masked(text: str, step: Path) -> str:
     """For a volatile step, hide the numbers that legitimately change from run to run."""
     config = config_of(step)
-    return re.sub(r'\d+(?:[.,]\d+)*', '#', text) if config.get('volatile') else text
+    if not config.get('volatile'):
+        return text
+    # A memory address (an object's repr) differs in its hex LETTERS too: mask it whole first.
+    return re.sub(r'\d+(?:[.,]\d+)*', '#', re.sub(r'0x[0-9a-f]+', '0x#', text))
 
 
 def config_of(step: Path) -> dict:

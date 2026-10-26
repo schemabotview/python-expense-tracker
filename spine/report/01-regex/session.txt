@@ -1,0 +1,13 @@
+$ python -q -i main.py
+expense> categorise
+categorised 12 expenses
+expense> list shopping
+2026-10-07 AMZN MKTP UK*2K4 15.99 shopping
+expense> save
+saved 20 expenses to data/expenses.json
+expense> quit
+>>> re.search(r"^AMZN MKTP", "AMZN MKTP UK*2K4")
+<re.Match object; span=(0, 9), match='AMZN MKTP'>
+>>> categorise("TFL TRAVEL CH"), categorise("BAKERY")
+('transport', 'other')
+>>> exit()

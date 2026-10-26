@@ -1,0 +1,10 @@
+$ python main.py
+expense> report
+2026-10       spent   budget  used
+fun           96.29    60.00  ##########  160% over
+food          93.99   300.00  ###          31%
+transport     76.80    80.00  #########    96% careful
+bills         32.40   120.00  ##           27%
+shopping      15.99   100.00  #            16%
+rent           0.00   950.00                0%
+expense> quit

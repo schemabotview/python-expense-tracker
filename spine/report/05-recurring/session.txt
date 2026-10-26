@@ -1,0 +1,5 @@
+$ python main.py
+expense> recurring
+NETFLIX.COM 10.99, every [30] days
+THAMES WATER 32.40, every [30] days
+expense> quit

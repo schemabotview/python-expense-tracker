@@ -1,0 +1,1 @@
+{"from": "save/06-validating", "changes": ["data/expenses.json", "main.py"], "capture": ["data/expenses.json"], "venv": true}

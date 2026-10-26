@@ -1,0 +1,13 @@
+$ python main.py
+expense> top
+2026-10-04 Train to Porto 68.40 transport
+2026-10-05 Concert tickets 64.00 fun
+2026-10-03 Corner Market 46.20 food
+expense> report
+food: on track, 156.51 left
+fun: over budget by 47.28
+transport: over budget by 2.40
+bills: on track, 55.20 left
+shopping: on track, 84.01 left
+rent: on track, 950 left
+expense> quit
