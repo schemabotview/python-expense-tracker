@@ -21,18 +21,13 @@ Why an expense tracker:
 ## Packaging for YouTube
 
 **One video: "Learn Python by building an expense tracker: full course, beginner to professional"**
-covers all 11 courses, 69 sections, ~2 h 20 min, in two acts:
-
-| Act | Courses | Sections | ~Length | Chapter marker |
-| --- | --- | --- | --- | --- |
-| **Build it** | 1–7 | 43 | ~90 min | 0:00 |
-| **Make it professional** | 8–11 | 26 | ~55 min | ~1:30:00 |
+covers all 11 courses, 69 sections, ~2 h 20 min, as one continuous story: the app grows from
+its first line to a shipped tool, with no break in the middle.
 
 A course is one YouTube chapter group and the owner's review unit. A section (90–150 s) is one
 chapter, titled *concept: what the app gets* (e.g. "Dictionaries: budgets per category").
-The video opens with the finished app running (the payoff first). The description names both acts,
-so a beginner knows where the advanced half starts. The video is published only when all 11 courses
-are recorded. Each section can also go out as a Short (portrait, `record-reels`).
+The video opens with the finished app running (the payoff first). It is published only when all 11
+courses are recorded. Each section can also go out as a Short (portrait, `record-reels`).
 
 ## Python: 3.15, pinned to 3.15.1
 
@@ -80,13 +75,13 @@ expense-tracker/
 | 4 Decide | total, check budgets, take commands in a loop, reject bad input |
 | 5 Save | save/load its data; import a real bank CSV, reporting bad rows |
 | 6 Report | auto-categorise, report by category/month, spot recurring bills |
-| 7 Command | run as `expense-tracker add 12.50 food` / `expense-tracker report --month 2026-10` — **end of act 1** |
+| 7 Command | run as `expense-tracker add 12.50 food` / `expense-tracker report --month 2026-10` |
 | 8 Model | classes everywhere; JSON or SQLite storage behind one protocol |
 | 9 Trust | typed, tested, logged |
 | 10 Connect | fetch exchange rates concurrently; measured |
-| 11 Ship | configured, installable, and served as a web API — **end of the video** |
+| 11 Ship | configured, installable, and served as a web API |
 
-## Act 1 · Build it — courses 1–7
+## The courses
 
 Detours are marked ◆. Side pane = the diagram (every IDE section carries one).
 
@@ -166,9 +161,7 @@ Detours are marked ◆. Side pane = the diagram (every IDE section carries one).
 | 1 | Modules ◆ what `import` runs | split `main.py`; `lazy import` | import graph, `sys.modules` |
 | 2 | Packages and `__main__` | `expense_tracker/`; `python -m expense_tracker`; why `_` not `-` | two ways in, one guard |
 | 3 | `argparse` | `expense-tracker add 12.50 food`, `… report` | argv → parser → the call it makes |
-| 4 | The whole app | import → categorise → report, end to end | **the app map**, act 1's stages lit |
-
-## Act 2 · Make it professional — courses 8–11
+| 4 | The whole app | import → categorise → report, end to end | **the app map**, the stages built so far lit |
 
 **8. `model` · Model it with classes · 9**
 
@@ -237,5 +230,5 @@ never reads code aloud. A detour ◆ is ≤ 120 s and returns to the app.
 
 1. App: `expense-tracker` (package `expense_tracker`), a personal expense tracker.
 2. Standard library only for the app; mypy, pytest, ruff as dev tools from Course 9.
-3. One video, two acts: Build it (1–7) and Make it professional (8–11).
+3. One video, one continuous story: 11 courses, no parts or acts.
 4. Background is just-in-time (◆ detours), never a front-loaded course.
