@@ -1,7 +1,7 @@
 # python-expense-tracker
 
-**Learn Python by building an expense tracker.** A GraphL concept app: one application, `ledger`,
-grows from a five-line script to a tested, packaged command (`ledger report --month 2026-10`) and a
+**Learn Python by building an expense tracker.** A GraphL concept app: one application, `expense-tracker`,
+grows from a five-line script to a tested, packaged command (`expense-tracker report --month 2026-10`) and a
 small web API. Every Python feature is taught at the moment the app needs it, in real, executed
 code. Scenes render with `@graphlearning/graphl-flow`; the app shell is `@graphlearning/shell`.
 

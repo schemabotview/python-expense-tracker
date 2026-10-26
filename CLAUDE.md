@@ -4,7 +4,7 @@
 
 ## What this repo is
 
-A GraphL concept app: **learn Python by building an expense tracker**, `ledger`, from a first
+A GraphL concept app: **learn Python by building an expense tracker**, `expense-tracker`, from a first
 script to a tested, packaged CLI and web API, in real, executed code. A **section** is
 `(scene, narration)`: one full-screen 16:9 frame, one chapter of the video.
 

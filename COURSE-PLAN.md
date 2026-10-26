@@ -4,7 +4,7 @@
 
 ## The idea
 
-One application, `ledger`, a personal expense tracker. It grows from a five-line script to a tested,
+One application, `expense-tracker`, a personal expense tracker. It grows from a five-line script to a tested,
 packaged command and a small web API. Every Python feature is taught **when the app first needs
 it**. Background topics (what Python is, how it runs code, memory) appear as short detours at the
 moment they answer a question on screen. They are never front-loaded.
@@ -35,7 +35,11 @@ Same pin as python-ct (`3.15.1`, and `3.15.1t` where threads are measured). Ever
 3.15 features used: UTF-8 default (5.4), `frozendict` (3.8), `sentinel` (3.4), unpacking in
 comprehensions (4.6), `lazy import` (7.3), free-threaded build (10.5).
 
-## The app: `ledger`
+## The app: `expense-tracker`
+
+One name everywhere: the folder, the project in `pyproject.toml` and the command are
+`expense-tracker`; the importable package is `expense_tracker` (Python names cannot contain `-`,
+taught in 7.2 and 11.2).
 
 Ana's spending. Data is synthetic and owned: `data/bank/bank-2026-MM.csv` exports
 (`date,description,amount,currency`) and `data/budgets.json` (food, transport, rent, bills,
@@ -50,7 +54,7 @@ expense-tracker/
   data/expenses.json    what the app saves                           (5)
   data/budgets.json     limits per category                          (5)
   data/bank/*.csv       bank exports to import                       (5)
-  ledger/
+  expense_tracker/
     __init__.py, __main__.py                                         (7)
     cli.py              argparse: add / list / import / report       (7)
     categorise.py       regex rules: "AMZN MKTP*…" → shopping         (6)
@@ -61,7 +65,7 @@ expense-tracker/
     rates.py            exchange rates, async                        (10)
     api.py              a small JSON web API                         (11)
   tests/                                                             (9 →)
-  pyproject.toml        project, dev tools, the `ledger` command     (7 → 11)
+  pyproject.toml        project, dev tools, the `expense-tracker` command (7 → 11)
 ```
 
 | After course | The app can… |
@@ -71,7 +75,7 @@ expense-tracker/
 | 4 Decide | total, check budgets, take commands in a loop, reject bad input |
 | 5 Save | save/load its data; import a real bank CSV, reporting bad rows |
 | 6 Report | auto-categorise, report by category/month, spot recurring bills |
-| 7 Command | run as `ledger add 12.50 food` / `ledger report --month 2026-10` — **end of act 1** |
+| 7 Command | run as `expense-tracker add 12.50 food` / `expense-tracker report --month 2026-10` — **end of act 1** |
 | 8 Model | classes everywhere; JSON or SQLite storage behind one protocol |
 | 9 Trust | typed, tested, logged |
 | 10 Connect | fetch exchange rates concurrently; measured |
@@ -155,8 +159,8 @@ Detours are marked ◆. Side pane = the diagram (every IDE section carries one).
 | # | Section | Step | Side pane |
 | --- | --- | --- | --- |
 | 1 | Modules ◆ what `import` runs | split `main.py`; `lazy import` | import graph, `sys.modules` |
-| 2 | Packages and `__main__` | `ledger/`; `python -m ledger` | two ways in, one guard |
-| 3 | `argparse` | `ledger add 12.50 food`, `ledger report` | argv → parser → the call it makes |
+| 2 | Packages and `__main__` | `expense_tracker/`; `python -m expense_tracker`; why `_` not `-` | two ways in, one guard |
+| 3 | `argparse` | `expense-tracker add 12.50 food`, `… report` | argv → parser → the call it makes |
 | 4 | The whole app | import → categorise → report, end to end | **the app map**, act 1's stages lit |
 
 ## Act 2 · Make it professional — courses 8–11
@@ -171,7 +175,7 @@ Detours are marked ◆. Side pane = the diagram (every IDE section carries one).
 | 4 | Properties and invariants | amount must be non-zero | construction → accepted / `ValueError` |
 | 5 | A value object | `Money`: frozen, `__add__`, currency-aware | `a + b` makes a new object |
 | 6 | Container dunders | `Budget` with `__len__`, `__iter__`, `__contains__` | `len(b)` → `__len__` … |
-| 7 | Inheritance | `LedgerError` → `InvalidAmount`, `UnknownCategory` | the hierarchy; which `except` catches which |
+| 7 | Inheritance | `TrackerError` → `InvalidAmount`, `UnknownCategory` | the hierarchy; which `except` catches which |
 | 8 | Protocols and polymorphism | `Store`: `JsonStore`, `SqliteStore` | one protocol, two stores |
 | 9 | Context managers | SQLite transaction: commit or roll back | enter → work → exit, both paths |
 
@@ -204,10 +208,10 @@ The rate API is a stdlib `http.server` stub the step starts locally: replays sta
 | # | Section | Step | Side pane |
 | --- | --- | --- | --- |
 | 1 | Configuration | `tomllib` config, env vars, precedence | default ← file ← env ← flag |
-| 2 | Packaging | wheel, `ledger` entry point, fresh-venv install | pyproject → wheel → command |
+| 2 | Packaging | wheel; project `expense-tracker`, package `expense_tracker`, entry point; fresh-venv install | pyproject → wheel → command |
 | 3 | A web API | `http.server`: `GET /report`, `POST /expenses` | request → handler → store → JSON |
 | 4 | The finished app | the whole tree | the app map, every class on its stage |
-| 5 | Where next | FastAPI/Django (web), pandas/PySpark (data, the Spark series) | each part of `ledger` → its tool at scale |
+| 5 | Where next | FastAPI/Django (web), pandas/PySpark (data, the Spark series) | each part of the app → its tool at scale |
 
 ## How a section teaches
 
@@ -226,7 +230,7 @@ never reads code aloud. A detour ◆ is ≤ 120 s and returns to the app.
 
 ## Decisions
 
-1. App: `ledger`, a personal expense tracker; not a pipeline (that is the Spark series).
+1. App: `expense-tracker` (package `expense_tracker`), a personal expense tracker; not a pipeline (that is the Spark series).
 2. Standard library only for the app; mypy, pytest, ruff as dev tools from Course 9.
 3. One video, two acts: Build it (1–7) and Make it professional (8–11).
 4. Background is just-in-time (◆ detours), never a front-loaded course.
