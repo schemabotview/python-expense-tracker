@@ -21,7 +21,7 @@ Why an expense tracker:
 ## Packaging for YouTube
 
 **One video: "Learn Python by building an expense tracker: full course, beginner to professional"**
-covers all 11 courses, 69 sections, ~2 h 20 min, as one continuous story: the app grows from
+covers all 11 courses, 71 sections, ~2 h 25 min, as one continuous story: the app grows from
 its first line to a shipped tool, with no break in the middle.
 
 A course is one YouTube chapter group and the owner's review unit. A section (90–150 s) is one
@@ -33,7 +33,7 @@ courses are recorded. Each section can also go out as a Short (portrait, `record
 
 Same pin as python-ct (`3.15.1`, and `3.15.1t` where threads are measured). Every output is run.
 3.15 features used: UTF-8 default (5.4), `frozendict` (3.8), `sentinel` (3.4), unpacking in
-comprehensions (4.6), `lazy import` (7.3), free-threaded build (10.5).
+comprehensions (4.6), `lazy import` (7.3), free-threaded build (10.5–10.6).
 
 ## The app: `expense-tracker`
 
@@ -126,7 +126,7 @@ full scene. When in doubt, full scene.
 | 8 | Sets and `frozendict` | categories seen; frozen defaults | `in` on a set vs a list; a refused write |
 | 9 | Aliasing and copying ◆ side pane: refcounts | edit a "copy", the original changes | two names, one list; shallow vs deep |
 
-**4. `decide` · Make decisions, repeat, react · 10**
+**4. `decide` · Make decisions, repeat, react · 11**
 
 | # | Section | Step | Side pane |
 | --- | --- | --- | --- |
@@ -137,9 +137,10 @@ full scene. When in doubt, full scene.
 | 5 | `match` | dispatch `add` / `list` / `report` | the command against each case |
 | 6 | Comprehensions | food spending in one line (3.15 unpacking) | comprehension ↔ the loop it means |
 | 7 | Functions ◆ side pane: the call stack | `add_expense()`, `total()` | a frame pushed, popped |
-| 8 | Arguments and the mutable default | `tags=[]` bug | two calls, one default list |
-| 9 | Scope | LEGB; a global budget | namespaces, the lookup for one name |
-| 10 | Exceptions | `Decimal("abc")` → ask again; raise `InvalidAmount` | the exception travelling up a frame |
+| 8 | ◆ full scene: the memory model | concept + lab | the stack of frames and their namespaces → the heap's objects, each with its type and refcount; the real `getrefcount` output beside it |
+| 9 | Arguments and the mutable default | `tags=[]` bug | two calls, one default list |
+| 10 | Scope | LEGB; a global budget | namespaces, the lookup for one name |
+| 11 | Exceptions | `Decimal("abc")` → ask again; raise `InvalidAmount` | the exception travelling up a frame |
 
 **5. `save` · Save it, import the bank · 6**
 
@@ -198,7 +199,7 @@ full scene. When in doubt, full scene.
 | 5 | Logging | `logging` instead of `print` | logger → handler → file / stderr |
 | 6 | Decorators and closures | `@timed` | wrapper + closure cell |
 
-**10. `connect` · Talk to the network, measure it · 6**
+**10. `connect` · Talk to the network, measure it · 7**
 
 | # | Section | Step | Side pane |
 | --- | --- | --- | --- |
@@ -206,8 +207,9 @@ full scene. When in doubt, full scene.
 | 2 | `asyncio` | every rate at once | event loop, suspended tasks |
 | 3 | Measure first | `cProfile` on a year import | profile top rows |
 | 4 | CPU- vs I/O-bound | the question that picks the tool | where time goes in each |
-| 5 | Threads, the GIL, free-threaded 3.15t | categorise a year on both builds | plot: wall time, 1 vs 4 threads |
-| 6 | Processes | one process per export file | pool, workers, results gathered |
+| 5 | ◆ full scene: the GIL and free-threading | concept + lab (`sys._is_gil_enabled()` on both builds) | threads → one lock → one core at a time, beside 3.15t: threads → cores in parallel; what each build costs |
+| 6 | Threads, measured on both builds | categorise a year on `python3.15` and `python3.15t` | plot: wall time, 1 vs 4 threads |
+| 7 | Processes | one process per export file | pool, workers, results gathered |
 
 The rate API is a stdlib `http.server` stub the step starts locally: replays stay deterministic.
 

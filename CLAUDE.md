@@ -24,13 +24,13 @@ Plan drafted 2026-10-26, awaiting owner review. Nothing authored; no app scaffol
 | 1 | `intro` | 2 | not started |
 | 2 | `start` | 5 | not started (pilot) |
 | 3 | `hold` | 9 | not started |
-| 4 | `decide` | 10 | not started |
+| 4 | `decide` | 11 | not started |
 | 5 | `save` | 6 | not started |
 | 6 | `report` | 7 | not started |
 | 7 | `command` | 4 | not started |
 | 8 | `model` | 9 | not started |
 | 9 | `trust` | 6 | not started |
-| 10 | `connect` | 6 | not started |
+| 10 | `connect` | 7 | not started |
 | 11 | `ship` | 5 | not started |
 
 ## Route contract
