@@ -83,7 +83,17 @@ expense-tracker/
 
 ## The courses
 
-Detours are marked ◆. Side pane = the diagram (every IDE section carries one).
+Side pane = the diagram (every IDE section carries one). Detours are marked ◆, in two kinds:
+
+- **◆ side pane:** a small picture of the code on screen (names → objects, a refcount, a frame).
+  It stays in the IDE frame, so the proof (the REPL output) stays visible beside it.
+- **◆ full scene:** a canonical big picture that needs the whole 16:9 frame (how Python runs a file,
+  for example). It is its own section with a concept frame, never squeezed into the side pane, and
+  carries the real output inside the scene as a `code` node imported from a lab, so it stays proof.
+  The next section returns to the IDE.
+
+Rule: if a detour's diagram cannot fit the side pane at ≥ 24px body text in the 4K frame, it is a
+full scene. When in doubt, full scene.
 
 **1. `intro` · Python, and what we'll build · 2**
 
@@ -98,7 +108,7 @@ Detours are marked ◆. Side pane = the diagram (every IDE section carries one).
 | --- | --- | --- | --- |
 | 1 | A folder and a venv | `python3.15 -m venv .venv` | system Python ← `.venv`, separate `site-packages` |
 | 2 | `main.py` | print one expense | file → interpreter → stdout |
-| 3 | ◆ What `python main.py` does | `dis` in the REPL | source → bytecode → VM → output |
+| 3 | ◆ full scene: what `python main.py` does | concept + lab (`dis`, `__pycache__`) | source → tokens → AST → bytecode → VM → output, the real `dis` of our line beside it |
 | 4 | The REPL beside the editor | try `12.50 + 3.20`, then write it down | read → eval → print → loop |
 | 5 | Reading errors | a `SyntaxError`, then a `NameError` | traceback anatomy, last line first |
 
@@ -106,7 +116,7 @@ Detours are marked ◆. Side pane = the diagram (every IDE section carries one).
 
 | # | Section | Step | Side pane |
 | --- | --- | --- | --- |
-| 1 | Names and objects ◆ the heap | `amount`, `category` | names → objects; a rebind moves an arrow |
+| 1 | Names and objects ◆ side pane: the heap | `amount`, `category` | names → objects; a rebind moves an arrow |
 | 2 | Numbers, and why money is a `Decimal` | `0.1 + 0.2`; amounts become `Decimal` | what `0.1` stores vs `Decimal("0.1")` |
 | 3 | Strings | descriptions: slicing, `.upper()`, f-strings | the string as indexed cells |
 | 4 | `None` and sentinels | "no note" vs "not given" | three states, three branches |
@@ -114,7 +124,7 @@ Detours are marked ◆. Side pane = the diagram (every IDE section carries one).
 | 6 | Tuples and unpacking | `date, desc, amount = row` | one tuple, three names |
 | 7 | Dictionaries | budgets by category; an expense as a dict | hash table: keys → buckets → values |
 | 8 | Sets and `frozendict` | categories seen; frozen defaults | `in` on a set vs a list; a refused write |
-| 9 | Aliasing and copying ◆ refcounts | edit a "copy", the original changes | two names, one list; shallow vs deep |
+| 9 | Aliasing and copying ◆ side pane: refcounts | edit a "copy", the original changes | two names, one list; shallow vs deep |
 
 **4. `decide` · Make decisions, repeat, react · 10**
 
@@ -126,7 +136,7 @@ Detours are marked ◆. Side pane = the diagram (every IDE section carries one).
 | 4 | `while` and `input()` | a command loop until `quit` | the loop with its exits |
 | 5 | `match` | dispatch `add` / `list` / `report` | the command against each case |
 | 6 | Comprehensions | food spending in one line (3.15 unpacking) | comprehension ↔ the loop it means |
-| 7 | Functions ◆ the call stack | `add_expense()`, `total()` | a frame pushed, popped |
+| 7 | Functions ◆ side pane: the call stack | `add_expense()`, `total()` | a frame pushed, popped |
 | 8 | Arguments and the mutable default | `tags=[]` bug | two calls, one default list |
 | 9 | Scope | LEGB; a global budget | namespaces, the lookup for one name |
 | 10 | Exceptions | `Decimal("abc")` → ask again; raise `InvalidAmount` | the exception travelling up a frame |
@@ -158,7 +168,7 @@ Detours are marked ◆. Side pane = the diagram (every IDE section carries one).
 
 | # | Section | Step | Side pane |
 | --- | --- | --- | --- |
-| 1 | Modules ◆ what `import` runs | split `main.py`; `lazy import` | import graph, `sys.modules` |
+| 1 | Modules ◆ side pane: what `import` runs | split `main.py`; `lazy import` | import graph, `sys.modules` |
 | 2 | Packages and `__main__` | `expense_tracker/`; `python -m expense_tracker`; why `_` not `-` | two ways in, one guard |
 | 3 | `argparse` | `expense-tracker add 12.50 food`, `… report` | argv → parser → the call it makes |
 | 4 | The whole app | import → categorise → report, end to end | **the app map**, the stages built so far lit |
@@ -231,4 +241,5 @@ never reads code aloud. A detour ◆ is ≤ 120 s and returns to the app.
 1. App: `expense-tracker` (package `expense_tracker`), a personal expense tracker.
 2. Standard library only for the app; mypy, pytest, ruff as dev tools from Course 9.
 3. One video, one continuous story: 11 courses, no parts or acts.
-4. Background is just-in-time (◆ detours), never a front-loaded course.
+4. Background is just-in-time (◆ detours), never a front-loaded course: side pane when it is a
+   small picture of the code on screen, a full scene when it is a canonical big picture.

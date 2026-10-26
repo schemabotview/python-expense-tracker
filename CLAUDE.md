@@ -56,7 +56,9 @@ text (`lineOf`), never typed as line numbers.
 
 Port python-ct's IDE template unchanged: explorer | editor (80 × 23) over terminal (13 lines) |
 fixed side pane. **Every IDE side pane carries a diagram** (memory, stack, flow, class, plot or
-result table), not a bullet list. No edges between panes. Concept scenes are authored wide for 16:9.
+result table), not a bullet list. No edges between panes. A detour (◆) is a side-pane diagram when it
+pictures the code on screen, and a full concept scene (its own section, real output inside it) when
+it is a canonical big picture that cannot fit the side pane at ≥ 24px; see `COURSE-PLAN.md`. Concept scenes are authored wide for 16:9.
 python-ct's authoring notes (no obstacle avoidance, ≤ 2 arrows into one node across a gap, valid
 icon keys) apply as written.
 
