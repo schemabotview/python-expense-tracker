@@ -1,0 +1,10 @@
+$ python main.py
+expense> import
+bank-2026-09.csv 5 imported
+  bank-2026-10.csv line 6: a duplicate
+  bank-2026-10.csv line 9: not a number: '12,50'
+  bank-2026-10.csv line 10: no date
+  bank-2026-10.csv line 11: must be more than zero: -15.99
+  bank-2026-10.csv line 12: in EUR: needs a rate
+bank-2026-10.csv 7 imported
+expense> quit

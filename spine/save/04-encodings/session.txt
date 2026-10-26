@@ -1,0 +1,11 @@
+$ python -q
+>>> raw = open("data/bank/bank-2026-09.csv", "rb").read()
+>>> raw.decode()
+Traceback (most recent call last):
+  File "<python-input-1>", line 1, in <module>
+    raw.decode()
+    ~~~~~~~~~~^^
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xc9 in position 47: invalid continuation byte
+>>> raw[44:55].decode("latin-1")
+'CAFÉ MÜLLER'
+>>> exit()

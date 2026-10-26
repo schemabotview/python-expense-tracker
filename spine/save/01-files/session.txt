@@ -1,0 +1,8 @@
+$ python main.py
+expense> save
+saved 7 expenses to expenses.txt
+expense> quit
+$ head -n 3 expenses.txt
+2026-10-01|Café Lumen|4.50|food
+2026-10-01|Noodle Bar|12.99|food
+2026-10-01|Metro|2.80|transport

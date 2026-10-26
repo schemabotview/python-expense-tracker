@@ -1,0 +1,7 @@
+$ python -q -c "import csv; print(next(csv.DictReader(open('data/bank/bank-2026-10.csv'))))"
+{'date': '2026-10-06', 'description': 'TESCO STORES 2041', 'amount': '23.85', 'currency': 'GBP'}
+$ python main.py
+expense> import
+bank-2026-09.csv 5 rows, columns ['date', 'description', 'amount', 'currency']
+bank-2026-10.csv 12 rows, columns ['date', 'description', 'amount', 'currency']
+expense> quit

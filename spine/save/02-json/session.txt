@@ -1,0 +1,13 @@
+$ python main.py
+expense> add 9.80 fun snacks
+added 9.80 to fun | expenses: 8
+expense> save
+saved 8 expenses to expenses.json
+expense> quit
+added this session: 1
+$ python main.py
+expense> list fun
+2026-10-02 Cinema Nova 11.50 fun
+2026-10-05 Concert tickets 64.00 fun
+2026-10-06 snacks 9.80 fun
+expense> quit

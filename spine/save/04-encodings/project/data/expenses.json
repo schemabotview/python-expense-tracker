@@ -1,0 +1,50 @@
+[
+  {
+    "date": "2026-10-01",
+    "description": "Café Lumen",
+    "amount": "4.50",
+    "category": "food"
+  },
+  {
+    "date": "2026-10-01",
+    "description": "Noodle Bar",
+    "amount": "12.99",
+    "category": "food"
+  },
+  {
+    "date": "2026-10-01",
+    "description": "Metro",
+    "amount": "2.80",
+    "category": "transport"
+  },
+  {
+    "date": "2026-10-02",
+    "description": "Cinema Nova",
+    "amount": "11.50",
+    "category": "fun"
+  },
+  {
+    "date": "2026-10-03",
+    "description": "Corner Market",
+    "amount": "46.20",
+    "category": "food"
+  },
+  {
+    "date": "2026-10-04",
+    "description": "Train to Porto",
+    "amount": "68.40",
+    "category": "transport"
+  },
+  {
+    "date": "2026-10-05",
+    "description": "Concert tickets",
+    "amount": "64.00",
+    "category": "fun"
+  },
+  {
+    "date": "2026-10-06",
+    "description": "snacks",
+    "amount": "9.80",
+    "category": "fun"
+  }
+]
