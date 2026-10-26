@@ -1,0 +1,1 @@
+{"from": "trust/04-fakes", "changes": ["expense_tracker/bank.py", "expense_tracker/cli.py", "expense_tracker/store.py"], "setup": ["pip install -q --group dev"], "volatile": true, "venv": true}

@@ -144,7 +144,9 @@ def replay(step: Path) -> tuple[str, dict[str, str]]:
             shutil.copytree(step / 'project', project)
         # pip's "a new release is available" notice depends on the date, not the code: switched off.
         env = {**os.environ, 'HOME': str(home), 'NO_COLOR': '1', 'PYTHON_COLORS': '0', 'TERM': 'dumb', 'PS1': '',
-               'PIP_DISABLE_PIP_VERSION_CHECK': '1'}
+               'PIP_DISABLE_PIP_VERSION_CHECK': '1',
+               # The temp HOME would give pip an empty cache every step: keep the real one.
+               'PIP_CACHE_DIR': os.environ.get('PIP_CACHE_DIR', str(Path.home() / '.cache' / 'pip'))}
         if config.get('venv'):
             project.mkdir(exist_ok=True)
             subprocess.run(['python', '-m', 'venv', '.venv'], cwd=project, env=env, check=True)

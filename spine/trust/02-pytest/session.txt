@@ -1,0 +1,13 @@
+$ mypy
+Success: no issues found in 10 source files
+$ pytest
+============================= test session starts ==============================
+platform linux -- Python 3.15.1, pytest-9.1.1, pluggy-1.7.0
+rootdir: /home/ana/expense-tracker
+configfile: pyproject.toml
+collected 6 items
+
+tests/test_categorise.py ..                                              [ 33%]
+tests/test_money.py ....                                                 [100%]
+
+============================== 6 passed in 0.05s ===============================

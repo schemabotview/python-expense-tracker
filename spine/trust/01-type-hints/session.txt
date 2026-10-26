@@ -1,0 +1,5 @@
+$ pip install -q --group dev
+$ mypy
+expense_tracker/cli.py:80: error: "object" has no attribute "__enter__"  [attr-defined]
+expense_tracker/cli.py:80: error: "object" has no attribute "__exit__"  [attr-defined]
+Found 2 errors in 1 file (checked 10 source files)

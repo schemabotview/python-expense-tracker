@@ -32,7 +32,7 @@ awaiting owner review; no audio yet. The app map (1.2, 7.4) is built with Course
 | 6 | `report` | 7 | authored; no audio yet |
 | 7 | `command` | 4 | authored; no audio yet |
 | 8 | `model` | 9 | authored; no audio yet |
-| 9 | `trust` | 6 | not started |
+| 9 | `trust` | 6 | authored; no audio yet |
 | 10 | `connect` | 7 | not started |
 | 11 | `ship` | 5 | not started |
 
@@ -56,6 +56,14 @@ section's real diff, checked), or `lab` (the real output a concept scene shows: 
 detour; `src/scenes/lab.ts` `outputOf` cuts one command's output from it). Experiments go in the REPL,
 never into `main.py`. Paths are normalised to `/home/ana/expense-tracker`. Highlights are found by
 text (`lineOf`), never typed as line numbers.
+
+A `volatile` step (timings, memory addresses) is compared with digits and `0x…` addresses masked, so
+its numbers change on every `--write`: a scene must READ such a value from the session (a regex
+over `session.txt`), never type it, and narration says "a fraction of a millisecond", not a number.
+From Course 9 on, steps `pip install --group dev` (mypy 2.4.0, pytest 9.1.1, ruff 0.17.2, pinned in
+`pyproject.toml`): the replay needs network, and `spine.py` keeps pip's real cache across steps.
+A long REPL traceback through library frames can race the next typed line in the pty: show such a
+failure through the app, or through a short frame of our own code.
 
 ## Frames
 

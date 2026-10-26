@@ -1,0 +1,12 @@
+$ pytest --collect-only -q tests/test_bank.py
+tests/test_bank.py::test_a_bad_row_is_refused[change0-not a number]
+tests/test_bank.py::test_a_bad_row_is_refused[change1-no date]
+tests/test_bank.py::test_a_bad_row_is_refused[change2-more than zero]
+tests/test_bank.py::test_a_bad_row_is_refused[change3-needs a rate]
+tests/test_bank.py::test_a_good_row_is_categorised
+tests/test_bank.py::test_the_same_row_twice_is_a_duplicate
+
+6 tests collected in 0.02s
+$ pytest -q
+............                                                             [100%]
+12 passed in 0.02s

@@ -1,0 +1,12 @@
+$ python -m expense_tracker import 2>&1 | tail -n 3
+WARNING expense_tracker.bank: bank-2026-10.csv line 12: in EUR: needs a rate
+WARNING expense_tracker.bank: bank-2026-10.csv line 13: a duplicate
+0 imported
+$ python -m expense_tracker -v top
+DEBUG expense_tracker.store: loaded 20 expenses from data/expenses.json
+2026-10-04 Train to Porto 68.40 GBP transport
+2026-10-05 Concert tickets 64.00 GBP fun
+2026-10-03 Corner Market 46.20 GBP food
+$ pytest -q
+...............                                                          [100%]
+15 passed in 0.04s

@@ -1,0 +1,1 @@
+{"from": "trust/02-pytest", "changes": ["tests/test_bank.py"], "setup": ["pip install -q --group dev"], "volatile": true, "venv": true}

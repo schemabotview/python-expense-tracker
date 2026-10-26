@@ -1,0 +1,1 @@
+{"from": "trust/01-type-hints", "changes": ["expense_tracker/cli.py", "tests"], "setup": ["pip install -q --group dev"], "volatile": true, "venv": true}
