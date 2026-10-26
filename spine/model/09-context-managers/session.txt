@@ -1,0 +1,12 @@
+$ python -q
+>>> from contextlib import suppress
+>>> from expense_tracker.store import SqliteStore
+>>> with SqliteStore() as s: len(s.load())
+...
+12
+>>> with suppress(ZeroDivisionError), SqliteStore() as s: s.save([]); 1 / 0
+...
+>>> with SqliteStore() as s: len(s.load())
+...
+12
+>>> exit()

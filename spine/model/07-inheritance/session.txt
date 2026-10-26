@@ -1,0 +1,11 @@
+$ python -m expense_tracker add 3.20 fod bakery
+not added: unknown category: 'fod'
+$ python -m expense_tracker add 12,50 food
+not added: not a number: '12,50'
+$ python -m expense_tracker add 3.20 FOOD bakery
+added 3.20 GBP to food
+$ python -q
+>>> from expense_tracker.errors import *
+>>> [c.__name__ for c in InvalidAmount.__mro__]
+['InvalidAmount', 'TrackerError', 'ValueError', 'Exception', 'BaseException', 'object']
+>>> exit()

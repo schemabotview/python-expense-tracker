@@ -1,0 +1,13 @@
+$ python -q
+>>> from expense_tracker.models import Category
+>>> Category("food"), Category.FOOD == "food"
+(<Category.FOOD: 'food'>, True)
+>>> "fod" in Category
+False
+>>> exit()
+$ python -m expense_tracker add 3.20 fod bakery
+usage: expense-tracker add [-h]
+                           amount
+                           {food,transport,fun,rent,bills,shopping,other}
+                           [note ...]
+expense-tracker add: error: argument category: invalid Category value: 'fod'

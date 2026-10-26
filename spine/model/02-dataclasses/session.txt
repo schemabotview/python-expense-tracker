@@ -1,0 +1,12 @@
+$ python -q
+>>> from expense_tracker.models import Expense
+>>> e = Expense("2026-10-01", "Café Lumen", 4.50, "food")
+>>> e
+Expense(date='2026-10-01', description='Café Lumen', amount=4.5, category='food')
+>>> e == Expense("2026-10-01", "Café Lumen", 4.50, "food")
+True
+>>> exit()
+$ python -m expense_tracker top
+2026-10-04 Train to Porto 68.40 transport
+2026-10-05 Concert tickets 64.00 fun
+2026-10-03 Corner Market 46.20 food

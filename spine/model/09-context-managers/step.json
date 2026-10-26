@@ -1,0 +1,1 @@
+{"from": "model/08-protocols", "changes": ["expense_tracker/cli.py", "expense_tracker/store.py"], "setup": ["python -m expense_tracker --store sqlite import"], "venv": true}

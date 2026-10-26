@@ -1,0 +1,13 @@
+$ python -m expense_tracker --store sqlite import
+  bank-2026-10.csv line 6: a duplicate
+  bank-2026-10.csv line 9: not a number: '12,50'
+  bank-2026-10.csv line 10: no date
+  bank-2026-10.csv line 11: must be more than zero: -15.99
+  bank-2026-10.csv line 12: in EUR: needs a rate
+12 imported
+$ python -m expense_tracker --store sqlite top
+2026-09-20 TESCO STORES 2041 41.10 GBP food
+2026-09-15 THAMES WATER 32.40 GBP bills
+2026-10-15 THAMES WATER 32.40 GBP bills
+$ ls -C data
+bank  expenses.db  expenses.json

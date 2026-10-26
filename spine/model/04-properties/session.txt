@@ -1,0 +1,12 @@
+$ python -q
+>>> from decimal import Decimal; from expense_tracker.models import *
+>>> Expense("2026-10-16", "refund", Decimal("-3"), Category.FUN)
+Traceback (most recent call last):
+  File "<python-input-1>", line 1, in <module>
+    Expense("2026-10-16", "refund", Decimal("-3"), Category.FUN)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 7, in __init__
+  File "/home/ana/expense-tracker/expense_tracker/models.py", line 30, in __post_init__
+    raise InvalidAmount(f"must be more than zero: {self.amount}")
+expense_tracker.money.InvalidAmount: must be more than zero: -3
+>>> exit()

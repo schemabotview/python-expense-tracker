@@ -1,0 +1,10 @@
+$ python -q
+>>> from expense_tracker.report import BUDGET
+>>> from expense_tracker.models import Category
+>>> len(BUDGET), Category.FUN in BUDGET, Category.OTHER in BUDGET
+(6, True, False)
+>>> BUDGET[Category.FUN]
+Decimal('60')
+>>> [str(c) for c in BUDGET]
+['food', 'transport', 'fun', 'rent', 'bills', 'shopping']
+>>> exit()

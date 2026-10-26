@@ -1,0 +1,13 @@
+$ python -q
+>>> from decimal import Decimal; from expense_tracker.money import Money
+>>> Money(Decimal("4.50")) + Money(Decimal("12.99"))
+Money(amount=Decimal('17.49'), currency='GBP')
+>>> Money(Decimal("4.50")) + Money(Decimal("48.00"), "EUR")
+Traceback (most recent call last):
+  File "<python-input-2>", line 1, in <module>
+    Money(Decimal("4.50")) + Money(Decimal("48.00"), "EUR")
+    ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  File "/home/ana/expense-tracker/expense_tracker/money.py", line 28, in __add__
+    raise ValueError(f"cannot add {other.currency} to {self.currency}")
+ValueError: cannot add EUR to GBP
+>>> exit()

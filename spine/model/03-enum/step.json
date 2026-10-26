@@ -1,0 +1,1 @@
+{"from": "model/02-dataclasses", "changes": ["expense_tracker/categorise.py", "expense_tracker/cli.py", "expense_tracker/models.py", "expense_tracker/report.py", "expense_tracker/store.py"], "venv": true}
