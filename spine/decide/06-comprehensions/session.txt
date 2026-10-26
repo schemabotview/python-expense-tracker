@@ -1,0 +1,12 @@
+$ python -q
+>>> days = [["coffee", "lunch"], ["metro"]]
+>>> [*day for day in days]
+['coffee', 'lunch', 'metro']
+>>> exit()
+$ python main.py
+expense-tracker: starting
+expense> list food
+2026-10-01 Café Lumen 4.50 food
+2026-10-01 Noodle Bar 12.99 food
+2026-10-03 Corner Market 46.20 food
+expense> quit

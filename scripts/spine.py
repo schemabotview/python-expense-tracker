@@ -13,7 +13,7 @@ so a frame can only show what this script has verified.
 Each step is replayed in a fresh temp copy named expense-tracker, inside a temp "home" directory, by
 ONE bash process, so `cd` and `source .venv/bin/activate` carry from command to command as they do
 in a real terminal. A command followed by `>>> ` (or `(Pdb) `) lines is an interactive session: it is run in a
-pseudo-terminal and fed those lines; `... ` continuation lines are typed without their indentation (the
+pseudo-terminal and fed those lines (the app's own `expense> ` prompt too); `... ` continuation lines are typed without their indentation (the
 3.13+ REPL indents for you) and a bare `...` ends a block. Temp paths are rewritten to /home/ana/expense-tracker, the path the
 frames show. Run it with the course's pinned interpreter first on PATH as `python` (see CLAUDE.md).
 
@@ -70,6 +70,7 @@ SHOWN_HOME = '/home/ana'
 PROJECT = 'expense-tracker'
 ANSI = re.compile(r'\x1b\[[0-9;?]*[@-~]|\x1b[=>]|\r')
 MARK = '__SPINE_MARK__'
+APP_PROMPT = 'expense> '
 
 
 def commands(session: str) -> list[tuple[str, list[str]]]:
@@ -87,6 +88,9 @@ def commands(session: str) -> list[tuple[str, list[str]]]:
             out[-1][1].append(line[4:].lstrip())
         elif out and line.startswith('(Pdb) '):
             out[-1][1].append(line[6:])
+        elif out and line.startswith(APP_PROMPT):
+            # The app's own prompt (input("expense> "), Course 4 on): typed into the pty like a REPL line.
+            out[-1][1].append(line[len(APP_PROMPT):])
     return out
 
 

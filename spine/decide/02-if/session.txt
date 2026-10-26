@@ -1,0 +1,10 @@
+$ python main.py
+expense-tracker: starting
+transport: careful, 8.80 left
+$ python -q
+>>> used = 89
+>>> used > 100, used >= 80
+(False, True)
+>>> 80 <= used <= 100
+True
+>>> exit()

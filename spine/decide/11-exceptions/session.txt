@@ -1,0 +1,10 @@
+$ python main.py
+expense-tracker: starting
+expense> add 12,50 food lunch
+not added: not a number: '12,50'
+expense> add -3 fun
+not added: must be more than zero: -3
+expense> add 12.50 food lunch
+added 12.50 to food | expenses: 8
+expense> quit
+added this session: 1

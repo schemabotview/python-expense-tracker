@@ -1,0 +1,5 @@
+$ python memory.py
+stack, top first: ['total', 'report', '<module>']
+names in total's frame: ['category', 'frames']
+refcount of the list: 2
+food: 4.50

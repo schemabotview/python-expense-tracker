@@ -1,0 +1,13 @@
+$ python -q
+>>> def tag(word, tags=[]): tags.append(word); return tags
+...
+>>> tag("bakery")
+['bakery']
+>>> tag("metro")
+['bakery', 'metro']
+>>> exit()
+$ python main.py
+expense-tracker: starting
+expense> add 3.20 food bakery near work
+added 3.20 to food | expenses: 8
+expense> quit

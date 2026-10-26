@@ -56,7 +56,7 @@ export function terminal(session: string): string {
   const out: string[] = []
   let inError = false
   for (const line of trim(session).split('\n')) {
-    if (line.startsWith('$ ') || line.startsWith('>>> ') || line.startsWith('... ')) inError = false
+    if (line.startsWith('$ ') || line.startsWith('>>> ') || line.startsWith('... ') || line.startsWith('expense> ')) inError = false
     else if (!inError && (line === 'Traceback (most recent call last):' || /^ {2}File ".*", line \d+/.test(line))) inError = true
     const rows = line.match(new RegExp(`.{1,${EDITOR_COLS}}`, 'g')) ?? ['']
     if (inError) {

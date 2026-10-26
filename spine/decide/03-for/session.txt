@@ -1,0 +1,5 @@
+$ python main.py
+expense-tracker: starting
+food: on track, 236.31 left
+transport: careful, 8.80 left
+fun: over budget by 15.50

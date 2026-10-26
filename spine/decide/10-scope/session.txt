@@ -1,0 +1,10 @@
+$ python main.py
+expense-tracker: starting
+expense> add 3.20 food bakery
+Traceback (most recent call last):
+  File "/home/ana/expense-tracker/main.py", line 53, in <module>
+    count = add_expense(Decimal(amount), category, " ".join(words))
+  File "/home/ana/expense-tracker/main.py", line 46, in add_expense
+    added += 1
+    ^^^^^
+UnboundLocalError: cannot access local variable 'added' where it is not associated with a value
