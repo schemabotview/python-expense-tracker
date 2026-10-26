@@ -1,4 +1,4 @@
-# Learn Python by building an expense tracker — course plan
+# Learn Python by building an expense tracker: full course, beginner to professional — plan
 
 **Status: v1 plan, awaiting owner review (2026-10-26).** Nothing is authored yet.
 
@@ -15,14 +15,19 @@ Databricks series. This course teaches Python itself through what Python is most
 
 ## Packaging for YouTube
 
-| Video | Courses | Sections | ~Length |
-| --- | --- | --- | --- |
-| **A — "Learn Python by building an expense tracker — full course"** | 1–7 | 43 | ~90 min |
-| **B — "Python like a professional: finish the expense tracker"** (sequel) | 8–11 | 26 | ~55 min |
+**One video: "Learn Python by building an expense tracker: full course, beginner to professional"**
+covers all 11 courses, 69 sections, ~2 h 20 min, in two acts:
 
-A course is one YouTube **chapter group** and the owner's review unit. A section (90–150 s) is one
+| Act | Courses | Sections | ~Length | Chapter marker |
+| --- | --- | --- | --- | --- |
+| **Build it** | 1–7 | 43 | ~90 min | 0:00 |
+| **Make it professional** | 8–11 | 26 | ~55 min | ~1:30:00 |
+
+A course is one YouTube chapter group and the owner's review unit. A section (90–150 s) is one
 chapter, titled *concept: what the app gets* (e.g. "Dictionaries: budgets per category").
-Video A opens with the finished app running (the payoff first) and ends by pointing at Video B.
+The video opens with the finished app running (the payoff first). The description names both acts,
+so a beginner knows where the advanced half starts. The video is published only when all 11 courses
+are recorded. Each section can also go out as a Short (portrait, `record-reels`).
 
 ## Python: 3.15, pinned to 3.15.1
 
@@ -66,13 +71,13 @@ expense-tracker/
 | 4 Decide | total, check budgets, take commands in a loop, reject bad input |
 | 5 Save | save/load its data; import a real bank CSV, reporting bad rows |
 | 6 Report | auto-categorise, report by category/month, spot recurring bills |
-| 7 Command | run as `ledger add 12.50 food` / `ledger report --month 2026-10` — **end of Video A** |
+| 7 Command | run as `ledger add 12.50 food` / `ledger report --month 2026-10` — **end of act 1** |
 | 8 Model | classes everywhere; JSON or SQLite storage behind one protocol |
 | 9 Trust | typed, tested, logged |
 | 10 Connect | fetch exchange rates concurrently; measured |
-| 11 Ship | configured, installable, and served as a web API — **end of Video B** |
+| 11 Ship | configured, installable, and served as a web API — **end of the video** |
 
-## Video A — courses 1–7
+## Act 1 · Build it — courses 1–7
 
 Detours are marked ◆. Side pane = the diagram (every IDE section carries one).
 
@@ -152,9 +157,9 @@ Detours are marked ◆. Side pane = the diagram (every IDE section carries one).
 | 1 | Modules ◆ what `import` runs | split `main.py`; `lazy import` | import graph, `sys.modules` |
 | 2 | Packages and `__main__` | `ledger/`; `python -m ledger` | two ways in, one guard |
 | 3 | `argparse` | `ledger add 12.50 food`, `ledger report` | argv → parser → the call it makes |
-| 4 | The whole app | import → categorise → report, end to end | **the app map**, Video A's stages lit |
+| 4 | The whole app | import → categorise → report, end to end | **the app map**, act 1's stages lit |
 
-## Video B — courses 8–11
+## Act 2 · Make it professional — courses 8–11
 
 **8. `model` · Model it with classes · 9**
 
@@ -216,12 +221,12 @@ never reads code aloud. A detour ◆ is ≤ 120 s and returns to the app.
 2. Infra: port python-ct's frame template (`ide.ts`), `spine.py`, checks and registry; an app-map
    scene; data files.
 3. Course 2 as the pilot → owner review.
-4. Courses 1, 3–7 one at a time, reviewed on rendered routes → narrate → record **Video A**.
-5. Courses 8–11 → **Video B**.
+4. Courses 1, 3–11 one at a time, each reviewed on its rendered routes, then narrated.
+5. Record all 11 courses → assemble and publish the one video.
 
 ## Decisions
 
 1. App: `ledger`, a personal expense tracker; not a pipeline (that is the Spark series).
 2. Standard library only for the app; mypy, pytest, ruff as dev tools from Course 9.
-3. Two videos, not twelve: A (1–7) and B (8–11).
+3. One video, two acts: Build it (1–7) and Make it professional (8–11).
 4. Background is just-in-time (◆ detours), never a front-loaded course.

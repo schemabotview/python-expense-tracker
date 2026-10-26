@@ -9,7 +9,7 @@ script to a tested, packaged CLI and web API, in real, executed code. A **sectio
 `(scene, narration)`: one full-screen 16:9 frame, one chapter of the video.
 
 **`COURSE-PLAN.md` is the source of truth**: courses, sections, the app's growth, each side-pane
-diagram, and the two-video packaging. Author from it; change it first, never drift from it.
+diagram, and the packaging (one video, two acts). Author from it; change it first, never drift from it.
 
 Engine `@graphlearning/graphl-flow` (^0.2.0), shell `@graphlearning/shell` (^1.0.1), both published
 and pinned. Sister repo: **python-ct**, which has the same course design on a data pipeline.
@@ -19,19 +19,19 @@ Port its infra; do not reinvent it.
 
 Plan drafted 2026-10-26, awaiting owner review. Nothing authored; no app scaffold yet.
 
-| # | Course | Sections | Video | Status |
+| # | Course | Sections | Act | Status |
 | --- | --- | --- | --- | --- |
-| 1 | `intro` | 2 | A | not started |
-| 2 | `start` | 5 | A | not started (pilot) |
-| 3 | `hold` | 9 | A | not started |
-| 4 | `decide` | 10 | A | not started |
-| 5 | `save` | 6 | A | not started |
-| 6 | `report` | 7 | A | not started |
-| 7 | `command` | 4 | A | not started |
-| 8 | `model` | 9 | B | not started |
-| 9 | `trust` | 6 | B | not started |
-| 10 | `connect` | 6 | B | not started |
-| 11 | `ship` | 5 | B | not started |
+| 1 | `intro` | 2 | 1 | not started |
+| 2 | `start` | 5 | 1 | not started (pilot) |
+| 3 | `hold` | 9 | 1 | not started |
+| 4 | `decide` | 10 | 1 | not started |
+| 5 | `save` | 6 | 1 | not started |
+| 6 | `report` | 7 | 1 | not started |
+| 7 | `command` | 4 | 1 | not started |
+| 8 | `model` | 9 | 2 | not started |
+| 9 | `trust` | 6 | 2 | not started |
+| 10 | `connect` | 6 | 2 | not started |
+| 11 | `ship` | 5 | 2 | not started |
 
 ## Route contract
 
