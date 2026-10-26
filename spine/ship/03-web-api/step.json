@@ -1,0 +1,1 @@
+{"from": "ship/02-packaging", "changes": ["expense_tracker/api.py", "expense_tracker/cli.py"], "setup": ["python -m expense_tracker serve --idle 2 >/dev/null 2>&1 & sleep 0.5"], "venv": true}

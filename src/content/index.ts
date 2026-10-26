@@ -1,3 +1,4 @@
+import { intro } from './intro'
 import { start } from './start'
 import { hold } from './hold'
 import { decide } from './decide'
@@ -7,11 +8,13 @@ import { command } from './command'
 import { model } from './model'
 import { trust } from './trust'
 import { connect } from './connect'
+import { ship } from './ship'
 import type { Course, Section } from './types'
 
 // Course registry, in syllabus order. One course per chapter of COURSE-PLAN.md; a course is
 // registered here only once it is authored.
 export const COURSES: Record<string, Course> = {
+  [intro.id]: intro,
   [start.id]: start,
   [hold.id]: hold,
   [decide.id]: decide,
@@ -21,6 +24,7 @@ export const COURSES: Record<string, Course> = {
   [model.id]: model,
   [trust.id]: trust,
   [connect.id]: connect,
+  [ship.id]: ship,
 }
 
 export type { Course, Section }

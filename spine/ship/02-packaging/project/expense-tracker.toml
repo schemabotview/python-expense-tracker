@@ -1,0 +1,3 @@
+# expense-tracker's settings for this folder. The environment
+# (EXPENSE_TRACKER_STORE=...) and flags (--store ...) override them.
+store = "json"

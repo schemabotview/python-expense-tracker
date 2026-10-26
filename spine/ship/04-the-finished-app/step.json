@@ -1,0 +1,1 @@
+{"lab": true, "volatile": true, "setup": ["pip install -q --group dev"], "venv": true}

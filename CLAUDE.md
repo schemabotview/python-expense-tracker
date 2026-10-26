@@ -18,13 +18,12 @@ Port its infra; do not reinvent it.
 
 ## Status
 
-Plan drafted 2026-10-26. **Infra done** (ported from python-ct: IDE template, `spine.py`, checks,
-registry, shots) and the **pilot, Course 2 `start`**: authored, replayed, rendered and looked at,
-awaiting owner review; no audio yet. The app map (1.2, 7.4) is built with Course 1.
+All 11 courses (72 sections) authored 2026-10-26: replayed on 3.15.1 (70 spine steps), rendered
+at 4K, checked, and looked at. Awaiting the owner's review of the whole course; audio next.
 
 | # | Course | Sections | Status |
 | --- | --- | --- | --- |
-| 1 | `intro` | 2 | not started |
+| 1 | `intro` | 2 | authored; no audio yet |
 | 2 | `start` | 6 | pilot authored, awaiting owner review; no audio yet |
 | 3 | `hold` | 9 | authored; no audio yet |
 | 4 | `decide` | 11 | authored; no audio yet |
@@ -34,7 +33,7 @@ awaiting owner review; no audio yet. The app map (1.2, 7.4) is built with Course
 | 8 | `model` | 9 | authored; no audio yet |
 | 9 | `trust` | 6 | authored; no audio yet |
 | 10 | `connect` | 7 | authored; no audio yet |
-| 11 | `ship` | 5 | not started |
+| 11 | `ship` | 5 | authored; no audio yet |
 
 ## Route contract
 

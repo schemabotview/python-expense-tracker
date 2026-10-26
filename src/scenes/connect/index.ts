@@ -44,6 +44,7 @@ const http1 = ideFrame({
       type: 'table', id: 'ran', title: 'This session', tone: 'ingest', columns: ['asked', 'answer'], rows: [
         ['rate EUR', '1 EUR = 0.86 GBP'], { id: 'xyz', cells: ['rate XYZ', 'no rate for XYZ: HTTP 404'], tone: 'consume' },
         { id: 'tap', cells: ['import', '1 imported: TAP PORTO'], tone: 'store' }, ['list other', '2026-10-14 TAP PORTO 41.28 GBP'],
+        { id: 'tests', cells: ['pytest -q', '15 passed: rate faked in tests'], tone: 'store' },
       ],
     },
     { type: 'table', id: 'conv', title: 'to_gbp(Money(48.00, "EUR"))', tone: 'store', rows: [['48.00 × 0.86 = 41.28 GBP, rounded to the penny']] },

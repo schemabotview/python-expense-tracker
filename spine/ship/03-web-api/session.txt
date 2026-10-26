@@ -1,0 +1,10 @@
+$ curl -s "localhost:8766/report?month=2026-09"
+{"month": "2026-09", "spent": {"food": "49.50", "transport": "5.60", "fun": "10.99", "rent": "0", "bills": "32.40", "shopping": "0"}}
+$ curl -s -X POST localhost:8766/expenses -d '{"amount": "3.20", "category": "food", "note": "bakery"}'
+{"added": "3.20 GBP", "to": "food"}
+$ curl -s -X POST localhost:8766/expenses -d '{"amount": "12,50", "category": "food"}'
+{"error": "not a number: '12,50'"}
+$ curl -s localhost:8766/budgets
+{"error": "no such page: /budgets"}
+$ python -m expense_tracker list food | tail -n 1
+2026-10-16 bakery 3.20 GBP food

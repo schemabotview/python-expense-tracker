@@ -1,0 +1,1 @@
+{"from": "connect/07-processes", "changes": ["expense_tracker", "tests", "expense-tracker.toml"], "setup": ["pip install -q --group dev"], "volatile": true, "venv": true}

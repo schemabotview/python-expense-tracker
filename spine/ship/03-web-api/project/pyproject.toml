@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=84"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "expense-tracker"
+version = "1.0.0"
+description = "Where Ana's money goes."
+requires-python = ">=3.15"
+
+[project.scripts]
+expense-tracker = "expense_tracker.cli:main"    # the command, and what it runs
+
+[dependency-groups]
+dev = ["mypy==2.4.0", "pytest==9.1.1", "ruff==0.17.2"]
+
+[tool.setuptools]
+packages = ["expense_tracker"]    # not bench, stub or tests
+
+[tool.mypy]
+files = ["expense_tracker"]

@@ -1,0 +1,16 @@
+$ ls -C expense_tracker
+__init__.py  api.py   categorise.py  config.py	models.py  rates.py   store.py
+__main__.py  bank.py  cli.py	     errors.py	money.py   report.py  timing.py
+$ pytest -q
+.................                                                        [100%]
+17 passed in 0.09s
+$ mypy
+Success: no issues found in 14 source files
+$ python -m expense_tracker report
+2026-10       spent   budget  used      
+fun           96.29    60.00  ##########  160% over
+food          93.99   300.00  ###          31% 
+transport     76.80    80.00  #########    96% careful
+bills         32.40   120.00  ##           27% 
+shopping      15.99   100.00  #            16% 
+rent           0.00   950.00                0% 

@@ -7,3 +7,6 @@ WARNING expense_tracker.bank: bank-2026-10.csv line 13: a duplicate
 1 imported
 $ python -m expense_tracker list other
 2026-10-14 TAP PORTO 41.28 GBP other
+$ pytest -q
+...............                                                          [100%]
+15 passed in 0.06s

@@ -1,8 +1,8 @@
 $ python -m bench.threads
-GIL on : 1 thread 0.90 s, 4 threads 1.03 s, 0.9x
+GIL on : 1 thread 1.12 s, 4 threads 1.05 s, 1.1x
 $ python3.15t -m bench.threads
-GIL off: 1 thread 1.12 s, 4 threads 0.81 s, 1.4x
+GIL off: 1 thread 1.20 s, 4 threads 0.80 s, 1.5x
 $ python -m bench.threads
-GIL on : 1 thread 0.92 s, 4 threads 0.99 s, 0.9x
+GIL on : 1 thread 1.01 s, 4 threads 1.04 s, 1.0x
 $ python3.15t -m bench.threads
-GIL off: 1 thread 1.17 s, 4 threads 0.79 s, 1.5x
+GIL off: 1 thread 1.07 s, 4 threads 0.81 s, 1.3x
