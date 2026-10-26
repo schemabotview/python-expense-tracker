@@ -9,9 +9,14 @@ packaged command and a small web API. Every Python feature is taught **when the 
 it**. Background topics (what Python is, how it runs code, memory) appear as short detours at the
 moment they answer a question on screen. They are never front-loaded.
 
-Why an expense tracker (not a data pipeline): pipelines belong to the later Spark / PySpark /
-Databricks series. This course teaches Python itself through what Python is mostly used for:
-**automation → CLI tools → web services**. Everyone has spent money, so there is no domain to explain.
+Why an expense tracker:
+
+- **Everyone understands it.** Everyone has spent money, so there is no domain to explain.
+- **It is useful.** A learner can run it on their own bank export, so the result is theirs.
+- **It grows the way Python is used**: a script → a command-line tool → a web service.
+- **Each need pulls in a feature**: money needs `Decimal`, bank exports need files, CSV and
+  encodings, categorising needs regex, budgets need dicts, storage needs classes and protocols,
+  exchange rates need `asyncio`. Nothing is taught for its own sake.
 
 ## Packaging for YouTube
 
@@ -230,7 +235,7 @@ never reads code aloud. A detour ◆ is ≤ 120 s and returns to the app.
 
 ## Decisions
 
-1. App: `expense-tracker` (package `expense_tracker`), a personal expense tracker; not a pipeline (that is the Spark series).
+1. App: `expense-tracker` (package `expense_tracker`), a personal expense tracker.
 2. Standard library only for the app; mypy, pytest, ruff as dev tools from Course 9.
 3. One video, two acts: Build it (1–7) and Make it professional (8–11).
 4. Background is just-in-time (◆ detours), never a front-loaded course.
