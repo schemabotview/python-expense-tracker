@@ -1,0 +1,10 @@
+$ python -q -i main.py
+expense> quit
+>>> import sys
+>>> "report" in sys.modules, "bank" in sys.modules
+(True, False)
+>>> bank.InvalidRow
+<class 'bank.InvalidRow'>
+>>> "bank" in sys.modules
+True
+>>> exit()

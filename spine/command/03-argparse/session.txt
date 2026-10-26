@@ -1,0 +1,10 @@
+$ python -m expense_tracker report --month 2026-09
+2026-09       spent   budget  used      
+food          49.50   300.00  #            16% 
+bills         32.40   120.00  ##           27% 
+fun           10.99    60.00  #            18% 
+transport      5.60    80.00                7% 
+rent           0.00   950.00                0% 
+shopping       0.00   100.00                0% 
+$ python -m expense_tracker add 12,50 food
+not added: not a number: '12,50'

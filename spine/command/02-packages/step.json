@@ -1,0 +1,1 @@
+{"from": "command/01-modules", "changes": ["main.py", "money.py", "store.py", "categorise.py", "bank.py", "report.py", "expense_tracker"], "venv": true}

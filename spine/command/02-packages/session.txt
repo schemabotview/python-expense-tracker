@@ -1,0 +1,11 @@
+$ python -m expense_tracker
+expense> recent 7
+2 expenses, 35.20 in 7 days
+expense> quit
+$ python -q
+>>> import expense-tracker
+  File "<python-input-0>", line 1
+    import expense-tracker
+                  ^
+SyntaxError: invalid syntax
+>>> exit()

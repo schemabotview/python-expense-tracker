@@ -1,0 +1,18 @@
+$ python -m expense_tracker import
+  bank-2026-10.csv line 6: a duplicate
+  bank-2026-10.csv line 9: not a number: '12,50'
+  bank-2026-10.csv line 10: no date
+  bank-2026-10.csv line 11: must be more than zero: -15.99
+  bank-2026-10.csv line 12: in EUR: needs a rate
+12 imported
+$ python -m expense_tracker report
+2026-10       spent   budget  used      
+fun           96.29    60.00  ##########  160% over
+food          93.99   300.00  ###          31% 
+transport     76.80    80.00  #########    96% careful
+bills         32.40   120.00  ##           27% 
+shopping      15.99   100.00  #            16% 
+rent           0.00   950.00                0% 
+$ python -m expense_tracker recurring
+NETFLIX.COM 10.99, every [30] days
+THAMES WATER 32.40, every [30] days
