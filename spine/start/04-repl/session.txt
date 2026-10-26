@@ -1,0 +1,12 @@
+$ python -q
+>>> 4.50
+4.5
+>>> 4.50 + 12.99
+17.490000000000002
+>>> "Café Lumen".upper()
+'CAFÉ LUMEN'
+>>> exit()
+$ python main.py
+expense-tracker: starting
+Coffee at Café Lumen: 4.5
+Today so far: 17.490000000000002

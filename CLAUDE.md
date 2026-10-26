@@ -17,12 +17,14 @@ Port its infra; do not reinvent it.
 
 ## Status
 
-Plan drafted 2026-10-26, awaiting owner review. Nothing authored; no app scaffold yet.
+Plan drafted 2026-10-26. **Infra done** (ported from python-ct: IDE template, `spine.py`, checks,
+registry, shots) and the **pilot, Course 2 `start`**: authored, replayed, rendered and looked at,
+awaiting owner review; no audio yet. The app map (1.2, 7.4) is built with Course 1.
 
 | # | Course | Sections | Status |
 | --- | --- | --- | --- |
 | 1 | `intro` | 2 | not started |
-| 2 | `start` | 5 | not started (pilot) |
+| 2 | `start` | 6 | pilot authored, awaiting owner review; no audio yet |
 | 3 | `hold` | 9 | not started |
 | 4 | `decide` | 11 | not started |
 | 5 | `save` | 6 | not started |
@@ -40,15 +42,17 @@ from the shell. Do not reimplement the shell.
 
 ## Python: 3.15.1, every output run
 
-Pinned to CPython 3.15.1 (and `3.15.1t` for thread measurements), installed as in python-ct's
-`CLAUDE.md`. Every banner, traceback and printed value is replayed, never typed. Timings are rounded
+Pinned to CPython 3.15.1 (and `3.15.1t` for thread measurements). Install with
+`scripts/install-python.sh` (also usable as the cloud environment's setup script): it places the two
+binaries by name because copying one tree over the other silently swaps them. Every banner, traceback and printed value is replayed, never typed. Timings are rounded
 and tied to the build; CPython-specific behaviour is labelled CPython.
 
 ## The spine
 
 `spine/<course>/<NN-step>/` = `project/` (the app at that step) + `session.txt` + `step.json`.
 Scenes import them with `?raw`. Every step has exactly one of `first`, `from` + `changes` (the
-section's real diff, checked), or `lab` (Course 1 concept labs only). Experiments go in the REPL,
+section's real diff, checked), or `lab` (the real output a concept scene shows: Course 1 and every full-scene
+detour; `src/scenes/lab.ts` `outputOf` cuts one command's output from it). Experiments go in the REPL,
 never into `main.py`. Paths are normalised to `/home/ana/expense-tracker`. Highlights are found by
 text (`lineOf`), never typed as line numbers.
 

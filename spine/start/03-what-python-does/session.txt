@@ -1,0 +1,57 @@
+$ python main.py
+expense-tracker: starting
+Coffee at Café Lumen: 4.5
+$ python -m tokenize main.py
+0,0-0,0:            ENCODING       'utf-8'        
+1,0-1,41:           COMMENT        "# expense-tracker: where Ana's money goes"
+1,41-1,42:          NL             '\n'           
+2,0-2,1:            NL             '\n'           
+3,0-3,5:            NAME           'print'        
+3,5-3,6:            OP             '('            
+3,6-3,33:           STRING         '"expense-tracker: starting"'
+3,33-3,34:          OP             ')'            
+3,34-3,35:          NEWLINE        '\n'           
+4,0-4,5:            NAME           'print'        
+4,5-4,6:            OP             '('            
+4,6-4,29:           STRING         '"Coffee at Café Lumen:"'
+4,29-4,30:          OP             ','            
+4,31-4,35:          NUMBER         '4.50'         
+4,35-4,36:          OP             ')'            
+4,36-4,37:          NEWLINE        '\n'           
+5,0-5,0:            ENDMARKER      ''             
+$ python -m ast main.py
+Module(
+   body=[
+      Expr(
+         value=Call(
+            func=Name(id='print'),
+            args=[
+               Constant(value='expense-tracker: starting')])),
+      Expr(
+         value=Call(
+            func=Name(id='print'),
+            args=[
+               Constant(value='Coffee at Café Lumen:'),
+               Constant(value=4.5)]))])
+$ python -m dis main.py
+  0           RESUME                   0
+
+  3           LOAD_NAME                0 (print)
+              PUSH_NULL
+              LOAD_CONST               0 ('expense-tracker: starting')
+              CALL                     1
+              POP_TOP
+
+  4           LOAD_NAME                0 (print)
+              PUSH_NULL
+              LOAD_CONST               1 ('Coffee at Café Lumen:')
+              LOAD_CONST               2 (4.5)
+              CALL                     2
+              POP_TOP
+              LOAD_COMMON_CONSTANT     7 (None)
+              RETURN_VALUE
+$ python -c "import main"
+expense-tracker: starting
+Coffee at Café Lumen: 4.5
+$ ls __pycache__
+main.cpython-315.pyc

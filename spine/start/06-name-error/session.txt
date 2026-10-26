@@ -1,0 +1,7 @@
+$ python main.py
+expense-tracker: starting
+Traceback (most recent call last):
+  File "/home/ana/expense-tracker/main.py", line 4, in <module>
+    prnt("Coffee at Café Lumen:", 4.50)
+    ^^^^
+NameError: name 'prnt' is not defined. Did you mean: 'print'?

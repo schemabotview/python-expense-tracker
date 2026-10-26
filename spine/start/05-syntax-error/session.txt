@@ -1,0 +1,5 @@
+$ python main.py
+  File "/home/ana/expense-tracker/main.py", line 5
+    print("Today so far:", 4.50 + 12.99
+         ^
+SyntaxError: '(' was never closed

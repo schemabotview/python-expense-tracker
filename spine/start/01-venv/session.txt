@@ -1,0 +1,13 @@
+$ mkdir expense-tracker
+$ cd expense-tracker
+$ python3.15 -m venv .venv
+$ which python
+/usr/local/bin/python
+$ source .venv/bin/activate
+$ which python
+/home/ana/expense-tracker/.venv/bin/python
+$ python -c "import sys; print(sys.prefix); print(sys.base_prefix)"
+/home/ana/expense-tracker/.venv
+/usr/local
+$ readlink -f .venv/bin/python
+/usr/local/bin/python3.15

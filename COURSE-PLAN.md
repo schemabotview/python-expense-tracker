@@ -21,7 +21,7 @@ Why an expense tracker:
 ## Packaging for YouTube
 
 **One video: "Learn Python by building an expense tracker: full course, beginner to professional"**
-covers all 11 courses, 71 sections, ~2 h 25 min, as one continuous story: the app grows from
+covers all 11 courses, 72 sections, ~2 h 25 min, as one continuous story: the app grows from
 its first line to a shipped tool, with no break in the middle.
 
 A course is one YouTube chapter group and the owner's review unit. A section (90–150 s) is one
@@ -102,7 +102,7 @@ full scene. When in doubt, full scene.
 | 1 | What Python is, and where it's used | concept | Python → automation, web, data, ML, with a real tool on each |
 | 2 | What we'll build | concept | **the app map**: script → command → web API; the finished report |
 
-**2. `start` · The first script · 5**
+**2. `start` · The first script · 6**
 
 | # | Section | Step | Side pane |
 | --- | --- | --- | --- |
@@ -110,7 +110,8 @@ full scene. When in doubt, full scene.
 | 2 | `main.py` | print one expense | file → interpreter → stdout |
 | 3 | ◆ full scene: what `python main.py` does | concept + lab (`dis`, `__pycache__`) | source → tokens → AST → bytecode → VM → output, the real `dis` of our line beside it |
 | 4 | The REPL beside the editor | try `12.50 + 3.20`, then write it down | read → eval → print → loop |
-| 5 | Reading errors | a `SyntaxError`, then a `NameError` | traceback anatomy, last line first |
+| 5 | A `SyntaxError` | a missing bracket; nothing runs | the parser stops the file; traceback anatomy |
+| 6 | A `NameError` | `prnt`; line 3 already ran | the namespaces searched; the two errors compared |
 
 **3. `hold` · Hold the data · 9**
 

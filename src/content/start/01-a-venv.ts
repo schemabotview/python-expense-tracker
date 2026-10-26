@@ -1,0 +1,9 @@
+import type { Section } from '../types'
+
+export const aVenv: Section = {
+  id: 'a-venv',
+  title: 'An empty folder and a virtual environment',
+  scene: 'start-venv',
+  narration:
+    "Every Python project starts the same way, and so does ours: an empty folder, and a Python of its own. In the terminal, we make a folder called expense tracker and step into it. Then one command, python three point fifteen, dash m, venv, dot venv, creates a virtual environment: a folder named dot venv inside the project. It prints nothing, but look at the explorer on the left. Dot venv now holds a bin folder, a lib folder, and a small file called pyvenv dot cfg, open in the editor. Its first line says where this environment came from: the Python installed in user local. Back in the terminal, the first which python answers user local. Then we activate the environment, and the same question gets a different answer: the python inside dot venv. Activating does nothing more mysterious than putting that folder first on your path. The diagram on the right shows what you really have. The environment's python is not a second copy of Python. Readlink shows it is a link to the one interpreter in user local, and it borrows that installation's standard library too. What the environment owns is its own site packages folder, where every package this project installs will go, and nowhere else. sys dot prefix points into the project, while sys dot base prefix still points at the installation it was made from. That is the whole point: two projects on one machine can need different packages, or different versions of the same package, and each keeps its own. The folder even writes its own git ignore file, so it never ends up in version control. With a Python of its own, the expense tracker is ready for its first file.",
+}

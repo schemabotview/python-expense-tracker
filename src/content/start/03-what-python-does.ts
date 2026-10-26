@@ -1,0 +1,9 @@
+import type { Section } from '../types'
+
+export const whatPythonDoes: Section = {
+  id: 'what-python-does',
+  title: 'What python main.py does',
+  scene: 'start-what-python-does',
+  narration:
+    "When you type python main dot py, Python does not run your text directly. It runs it in two phases, and this picture follows line four, the coffee, through both. Every box holds Python's own output, produced by tools that ship with it. Along the top is the compile phase. First, the source: the text we wrote. Step two splits that text into tokens, the words of the language. python dash m tokenize shows them: the name print, an opening bracket, a string, a comma, a number, a closing bracket. Notice the number token is still four point five zero, exactly as typed. Step three parses the tokens into a syntax tree, which python dash m ast prints. The line has become a call, with print as the function and two constants as its arguments. And here is the answer to the last section's puzzle: the second constant is four point five. When the parser turned the text four point five zero into a float, the zero was gone, long before print ever saw it. Step four compiles the tree into bytecode, simple instructions for Python's virtual machine, and python dash m dis lists them: load the name print, push a null, load the two constants, call with two arguments, and throw the result away. When a file is imported as a module, this bytecode is cached in the pycache folder, so the next run can skip the first three steps. Then the run phase, along the bottom. Step five is the virtual machine, which executes one instruction at a time, using a stack of values. The table shows that stack after each instruction, in CPython, the standard Python: print, then the null, then the two arguments, until call runs print and leaves its result, None. Step six is what print wrote. Every Python program you will ever run goes through this same path.",
+}

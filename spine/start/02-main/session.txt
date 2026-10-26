@@ -1,0 +1,3 @@
+$ python main.py
+expense-tracker: starting
+Coffee at Café Lumen: 4.5
