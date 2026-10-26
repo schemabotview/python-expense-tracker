@@ -1,0 +1,13 @@
+$ python -q
+>>> e = ("2026-10-01", "Metro", 2.80)
+>>> e[1] = "Bus"
+Traceback (most recent call last):
+  File "<python-input-1>", line 1, in <module>
+    e[1] = "Bus"
+    ~^^^
+TypeError: 'tuple' object does not support item assignment
+>>> exit()
+$ python main.py
+expense-tracker: starting
+2026-10-01  Café Lumen  4.50  food
+3 expenses today

@@ -1,0 +1,11 @@
+$ python -q -i main.py
+expense-tracker: starting
+2026-10-01  Café Lumen  4.50  food
+categories used: ['food', 'transport'] | has fun: False
+>>> DEFAULT_BUDGETS["fun"] = Decimal("100")
+Traceback (most recent call last):
+  File "<python-input-0>", line 1, in <module>
+    DEFAULT_BUDGETS["fun"] = Decimal("100")
+    ~~~~~~~~~~~~~~~^^^^^^^
+TypeError: 'frozendict' object does not support item assignment
+>>> exit()

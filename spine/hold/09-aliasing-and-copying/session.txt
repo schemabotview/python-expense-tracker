@@ -1,0 +1,12 @@
+$ python -q -i main.py
+expense-tracker: starting
+2026-10-01  Café Lumen  4.50  food
+categories used: ['food', 'transport'] | has fun: False
+>>> import copy, sys
+>>> shallow, deep = copy.copy(october), copy.deepcopy(october)
+>>> today.append(("2026-10-01", "Bakery", Decimal("3.20"), "food"))
+>>> len(shallow["2026-10-01"]), len(deep["2026-10-01"])
+(4, 3)
+>>> sys.getrefcount(today)
+4
+>>> exit()

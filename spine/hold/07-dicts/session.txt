@@ -1,0 +1,13 @@
+$ python -q -i main.py
+expense-tracker: starting
+2026-10-01  Café Lumen  4.50  food
+food budget: 300 | categories: 4
+>>> budgets.get("gifts", 0)
+0
+>>> budgets["gifts"]
+Traceback (most recent call last):
+  File "<python-input-1>", line 1, in <module>
+    budgets["gifts"]
+    ~~~~~~~^^^^^^^^^
+KeyError: 'gifts'
+>>> exit()

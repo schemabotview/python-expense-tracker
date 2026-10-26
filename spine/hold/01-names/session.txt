@@ -1,0 +1,12 @@
+$ python main.py
+expense-tracker: starting
+2026-10-01 Café Lumen 4.5 food
+$ python -q
+>>> amount = 4.50
+>>> paid = amount
+>>> amount = 5.20
+>>> paid
+4.5
+>>> paid is amount
+False
+>>> exit()

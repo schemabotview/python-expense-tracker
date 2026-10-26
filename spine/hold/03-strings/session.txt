@@ -1,0 +1,12 @@
+$ python -q
+>>> date = "2026-10-01"
+>>> date[5:7]
+'10'
+>>> date[-2:]
+'01'
+>>> exit()
+$ python main.py
+expense-tracker: starting
+2026-10-01  Café Lumen  4.50  food
+month 2026-10, shop CAFÉ LUMEN
+Today so far: 17.49

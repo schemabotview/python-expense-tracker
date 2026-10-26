@@ -1,0 +1,11 @@
+$ python -q
+>>> bool(None)
+False
+>>> bool(0.0), bool(""), bool([])
+(False, False, False)
+>>> exit()
+$ python main.py
+expense-tracker: starting
+2026-10-01  Café Lumen  4.50  food
+note: False | receipt asked: False
+Today so far: 17.49

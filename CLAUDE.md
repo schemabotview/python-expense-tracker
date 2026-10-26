@@ -26,7 +26,7 @@ awaiting owner review; no audio yet. The app map (1.2, 7.4) is built with Course
 | --- | --- | --- | --- |
 | 1 | `intro` | 2 | not started |
 | 2 | `start` | 6 | pilot authored, awaiting owner review; no audio yet |
-| 3 | `hold` | 9 | not started |
+| 3 | `hold` | 9 | authored; no audio yet |
 | 4 | `decide` | 11 | not started |
 | 5 | `save` | 6 | not started |
 | 6 | `report` | 7 | not started |

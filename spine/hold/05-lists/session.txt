@@ -1,0 +1,12 @@
+$ python -q
+>>> today = ["coffee", "lunch"]
+>>> today.append("metro")
+>>> today[0], today[-1]
+('coffee', 'metro')
+>>> today[1:]
+['lunch', 'metro']
+>>> exit()
+$ python main.py
+expense-tracker: starting
+2026-10-01  Café Lumen  4.50  food
+3 expenses today, total 20.29
