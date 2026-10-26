@@ -1,0 +1,1 @@
+{"from": "trust/06-decorators", "changes": ["expense_tracker", "stub"], "setup": ["pip install -q --group dev", "python stub/rates_server.py >/dev/null 2>&1 & sleep 0.5"], "venv": true}

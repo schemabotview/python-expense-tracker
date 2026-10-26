@@ -1,0 +1,4 @@
+$ python -m bench.processes
+1 process 1.62 s, 4 processes 0.51 s, 3.2x
+$ python -m bench.processes
+1 process 1.26 s, 4 processes 0.52 s, 2.4x

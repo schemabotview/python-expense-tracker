@@ -1,0 +1,3 @@
+$ python -m bench.where_time_goes
+5 rates, one by one (I/O)      wall  1.02 s   CPU  0.01 s
+categorise 60,000 rows (CPU)   wall  0.05 s   CPU  0.05 s

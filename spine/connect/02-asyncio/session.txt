@@ -1,0 +1,6 @@
+$ python -m expense_tracker rates --one-by-one EUR USD CHF JPY SEK
+EUR 0.86  USD 0.79  CHF 0.89  JPY 0.0052  SEK 0.072
+5 rates in 1.0 s
+$ python -m expense_tracker rates EUR USD CHF JPY SEK
+EUR 0.86  USD 0.79  CHF 0.89  JPY 0.0052  SEK 0.072
+5 rates in 0.2 s

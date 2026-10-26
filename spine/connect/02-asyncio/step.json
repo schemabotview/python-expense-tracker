@@ -1,0 +1,1 @@
+{"from": "connect/01-http", "changes": ["expense_tracker/cli.py", "expense_tracker/rates.py"], "setup": ["pip install -q --group dev", "python stub/rates_server.py >/dev/null 2>&1 & sleep 0.5"], "volatile": true, "venv": true}

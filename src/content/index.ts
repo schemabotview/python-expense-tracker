@@ -6,6 +6,7 @@ import { report } from './report'
 import { command } from './command'
 import { model } from './model'
 import { trust } from './trust'
+import { connect } from './connect'
 import type { Course, Section } from './types'
 
 // Course registry, in syllabus order. One course per chapter of COURSE-PLAN.md; a course is
@@ -19,6 +20,7 @@ export const COURSES: Record<string, Course> = {
   [command.id]: command,
   [model.id]: model,
   [trust.id]: trust,
+  [connect.id]: connect,
 }
 
 export type { Course, Section }

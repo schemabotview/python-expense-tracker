@@ -1,0 +1,8 @@
+$ python -m bench.profile_import
+60000 rows in 0.43 s. Own time, by function:
+  validate        36%
+  search          18%
+  hash            10%
+  categorise      11%
+  parse_amount     7%
+  __post_init__    3%

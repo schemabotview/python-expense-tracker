@@ -1,0 +1,9 @@
+$ python -m expense_tracker rate EUR
+1 EUR = 0.86 GBP
+$ python -m expense_tracker rate XYZ
+no rate for XYZ: HTTP 404
+$ python -m expense_tracker import 2>&1 | tail -n 2
+WARNING expense_tracker.bank: bank-2026-10.csv line 13: a duplicate
+1 imported
+$ python -m expense_tracker list other
+2026-10-14 TAP PORTO 41.28 GBP other
