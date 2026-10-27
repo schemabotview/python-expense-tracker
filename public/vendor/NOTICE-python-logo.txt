@@ -1,0 +1,41 @@
+The Python logo (public/vendor/python-logo-notext.svg)
+======================================================
+
+The Python logo is a TRADEMARK of the Python Software Foundation. It is not
+covered by an open-source licence the way the pandas logo in the sister
+data-science repo is — that one is BSD-3-Clause, a copyright licence. Copyright
+and trademark are different questions, and this is the trademark one.
+
+The PSF Trademark Usage Policy (https://www.python.org/psf/trademarks/) says, in
+the parts that bear on a course thumbnail:
+
+  * "Non-commercial uses to promote the Python programming language are
+    allowed" for the unaltered logo.
+  * Nominative use — "stating accurately that software is written in the Python
+    programming language ... is always allowed".
+  * "Any other commercial uses require prior written permission from PSF."
+  * The logo "should be ... accompanied by a symbol for unregistered
+    trademarks: '(TM)' or a small TM".
+
+How it is used here
+-------------------
+* The logo is UNALTERED. It is not recoloured, cropped, restyled or combined
+  with other marks.
+* It is accompanied by a TM, as the policy asks.
+* It is used nominatively, to name the language the course teaches. The
+  course's own identity is the GraphL wordmark and the FULL COURSE badge; the
+  cover does not suggest the PSF produced, endorsed or sponsored it.
+
+What still needs a decision
+---------------------------
+If the video is MONETISED, that is a commercial use, and the policy asks for
+prior written permission from the PSF. Using the logo on a monetised channel
+without that permission is outside what the policy grants.
+
+Requests go to the PSF Trademarks Committee. If permission is not sought or not
+granted, rebuild the cover with the repo's own glyph instead:
+
+    npm run thumb:film -- --mark glyph
+
+which draws the `>>>` REPL prompt — Python's most recognisable screen element,
+owned by nobody.
