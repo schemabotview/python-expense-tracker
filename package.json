@@ -21,7 +21,8 @@
     "thumb": "graphl-thumb",
     "check:spine": "python scripts/spine.py",
     "shots": "node scripts/shots.mjs",
-    "film": "node scripts/film.mjs"
+    "film": "node scripts/film.mjs",
+    "thumb:film": "node scripts/thumb-film.mjs"
   },
   "dependencies": {
     "@graphlearning/graphl-flow": "^0.3.0",
