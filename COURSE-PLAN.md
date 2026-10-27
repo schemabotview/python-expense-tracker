@@ -21,10 +21,10 @@ Why an expense tracker:
 ## Packaging for YouTube
 
 **One video: "Learn Python by building an expense tracker: full course, beginner to professional"**
-covers all 11 courses, 72 sections, ~2 h 25 min, as one continuous story: the app grows from
+covers all 11 courses, 72 sections, 1 h 50 min, as one continuous story: the app grows from
 its first line to a shipped tool, with no break in the middle.
 
-A course is one YouTube chapter group and the owner's review unit. A section (90–150 s) is one
+A course is one YouTube chapter group and the owner's review unit. A section (82–108 s, mean 92) is one
 chapter, titled *concept: what the app gets* (e.g. "Dictionaries: budgets per category").
 The video opens with the finished app running (the payoff first). It is published only when all 11
 courses are recorded. Each section can also go out as a Short (portrait, `record-reels`).

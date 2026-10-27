@@ -19,21 +19,23 @@ Port its infra; do not reinvent it.
 ## Status
 
 All 11 courses (72 sections) authored 2026-10-26: replayed on 3.15.1 (70 spine steps), rendered
-at 4K, checked, and looked at. Awaiting the owner's review of the whole course; audio next.
+at 4K, checked, and looked at. Narrated and recorded 2026-10-27: all 72 wavs in, every course
+captured at 3840x2160, and combined into the single YouTube film (`npm run film` -> 1 h 50 min).
+Awaiting the owner's review of the whole course.
 
 | # | Course | Sections | Status |
 | --- | --- | --- | --- |
-| 1 | `intro` | 2 | authored; no audio yet |
-| 2 | `start` | 6 | pilot authored, awaiting owner review; no audio yet |
-| 3 | `hold` | 9 | authored; no audio yet |
-| 4 | `decide` | 11 | authored; no audio yet |
-| 5 | `save` | 6 | authored; no audio yet |
-| 6 | `report` | 7 | authored; no audio yet |
-| 7 | `command` | 4 | authored; no audio yet |
-| 8 | `model` | 9 | authored; no audio yet |
-| 9 | `trust` | 6 | authored; no audio yet |
-| 10 | `connect` | 7 | authored; no audio yet |
-| 11 | `ship` | 5 | authored; no audio yet |
+| 1 | `intro` | 2 | authored, narrated, recorded 4K |
+| 2 | `start` | 6 | authored, narrated, recorded 4K |
+| 3 | `hold` | 9 | authored, narrated, recorded 4K |
+| 4 | `decide` | 11 | authored, narrated, recorded 4K |
+| 5 | `save` | 6 | authored, narrated, recorded 4K |
+| 6 | `report` | 7 | authored, narrated, recorded 4K |
+| 7 | `command` | 4 | authored, narrated, recorded 4K |
+| 8 | `model` | 9 | authored, narrated, recorded 4K |
+| 9 | `trust` | 6 | authored, narrated, recorded 4K |
+| 10 | `connect` | 7 | authored, narrated, recorded 4K |
+| 11 | `ship` | 5 | authored, narrated, recorded 4K |
 
 ## Route contract
 

@@ -1,0 +1,78 @@
+Learn Python by building an expense tracker: full course, beginner to professional
+
+72 sections, 11 courses, 1:50:32. Every line of code is really run on
+CPython 3.15.1 — every banner, traceback and printed value you see is real output.
+
+⏱ CHAPTERS
+0:00:00 ▸ Python, and what we'll build — What Python is, and where it is used
+0:01:30 What we'll build
+0:02:56 ▸ The first script — An empty folder and a virtual environment
+0:04:34 main.py: the first lines, run from the terminal
+0:06:07 What python main.py does
+0:07:55 The REPL beside the editor
+0:09:30 A SyntaxError: found before anything runs
+0:11:03 A NameError: found while it runs
+0:12:36 ▸ Hold the data — Names and objects
+0:13:58 Numbers, and why money is a Decimal
+0:15:27 Strings: slicing and f-strings
+0:16:57 None, booleans and sentinels
+0:18:24 Lists: many expenses, in order
+0:19:47 Tuples and unpacking
+0:21:14 Dictionaries: budgets by category
+0:22:43 Sets and frozendict
+0:24:11 Aliasing, copying and reference counts
+0:25:42 ▸ Make decisions, repeat, react — Expressions and operators
+0:27:13 Decisions: if, elif and else
+0:28:45 for loops: every expense, every category
+0:30:13 while, input, break and continue
+0:31:38 match: commands with arguments
+0:33:07 Comprehensions
+0:34:40 Functions, and the call stack
+0:36:09 The memory model
+0:37:48 Arguments, defaults and the mutable default
+0:39:22 Scope: local, enclosing, global, built-in
+0:40:56 Exceptions: catch, raise, keep going
+0:42:35 ▸ Save it, import the bank — Files and with
+0:44:06 JSON
+0:45:36 pathlib
+0:47:08 Text and encodings
+0:48:45 CSV
+0:50:18 Validating rows
+0:51:57 ▸ Categorise and report — Regular expressions
+0:53:35 Grouping: Counter and defaultdict
+0:55:01 Sorting with key and lambda
+0:56:26 Dates and times
+0:57:55 Finding recurring bills
+0:59:23 Generators
+1:00:56 Formatting the report
+1:02:32 ▸ A real command — Modules, and what import runs
+1:04:08 Packages, and __main__
+1:05:46 argparse: a command line
+1:07:18 The whole app
+1:08:45 ▸ Model it with classes — Classes
+1:10:16 Dataclasses
+1:11:44 Enum: the categories that exist
+1:13:17 Properties and invariants
+1:14:51 A value object: Money
+1:16:25 Container dunders: Budget
+1:17:57 Inheritance: a family of errors
+1:19:32 Protocols and polymorphism
+1:21:04 Context managers
+1:22:44 ▸ Make it trustworthy — Type hints and mypy
+1:24:19 pytest
+1:25:51 Fixtures and parametrisation
+1:27:22 Test doubles: a fake store
+1:28:48 Logging
+1:30:20 Decorators and closures
+1:31:53 ▸ Talk to the network, measure it — HTTP: asking a service for a rate
+1:33:41 asyncio: waiting for many things at once
+1:35:11 Measure first: cProfile
+1:36:37 CPU-bound or I/O-bound?
+1:38:09 The GIL, and free-threading
+1:39:46 Threads, measured on both builds
+1:41:15 Processes
+1:42:51 ▸ Ship it — Configuration
+1:44:21 Packaging
+1:45:52 A web API
+1:47:33 The finished app
+1:49:04 Where next
