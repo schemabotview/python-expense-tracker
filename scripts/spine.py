@@ -55,8 +55,8 @@ import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent / 'spine'
-# Every output in the course is produced on this interpreter (COURSE-PLAN.md, "Python
-# version"). A different `python` changes the banner, pyvenv.cfg and error text, so it is refused up
+# Every output in the course is produced on this interpreter (COURSE-PLAN.md, "Stack and
+# pins"). A different `python` changes the banner, pyvenv.cfg and error text, so it is refused up
 # front rather than reported as a hundred transcript differences.
 PINNED = 'Python 3.15.1'
 # Sessions call the interpreter by all of these names, and a venv records where it came from

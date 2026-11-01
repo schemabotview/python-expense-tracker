@@ -4,7 +4,7 @@
 //
 //   1. A section must be scene-only and narrated, and its scene must exist.
 //   2. Node ids are unique within a scene (graphl-flow resolves edges and focus by id).
-//   3. An IDE side pane is a DIAGRAM (COURSE-PLAN.md, "The side pane is a diagram"): it holds
+//   3. An IDE side pane is a DIAGRAM (../CLAUDE.md, "Frames"): it holds
 //      an edge, a plot or a table (python-ct's v1 panes were 79 bullet lists and one edge in 90
 //      sections). A bulleted card in a side pane is a caption, so it holds ≤ 3 bullets.
 //   4. An IDE frame draws edges only INSIDE its side pane: an edge between panes widens the gap it
