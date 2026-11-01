@@ -1,6 +1,8 @@
 # Learn Python by building an expense tracker: full course, beginner to professional — plan
 
-**Status: v1 plan, awaiting owner review (2026-10-26).** Nothing is authored yet.
+**Plan status:** approved; all 11 courses authored 2026-10-26 and recorded 2026-10-27. Shared rules
+(section shape, ◆ detours, packaging, build order) are in `../CLAUDE.md`; this plan states only what
+is specific to Python.
 
 ## The idea
 
@@ -18,34 +20,26 @@ Why an expense tracker:
   encodings, categorising needs regex, budgets need dicts, storage needs classes and protocols,
   exchange rates need `asyncio`. Nothing is taught for its own sake.
 
-## Packaging for YouTube
+## Packaging
 
-**One video: "Learn Python by building an expense tracker: full course, beginner to professional"**
-covers all 11 courses, 72 sections, 1 h 50 min, as one continuous story: the app grows from
-its first line to a shipped tool, with no break in the middle.
+**One film: "Learn Python by building an expense tracker: full course, beginner to professional"**
+— 11 courses, 72 sections, 1 h 50 min, one continuous story from the app's first line to a shipped
+tool, with no break in the middle. A section is 82–108 s (mean 92), titled *concept: what the app
+gets* (e.g. "Dictionaries: budgets per category").
 
-A course is one YouTube chapter group and the owner's review unit. A section (82–108 s, mean 92) is one
-chapter, titled *concept: what the app gets* (e.g. "Dictionaries: budgets per category").
-The video opens with the finished app running (the payoff first). It is published only when all 11
-courses are recorded. Each section can also go out as a Short (portrait, `record-reels`).
+## Stack and pins
 
-## Python: 3.15, pinned to 3.15.1
-
-Same pin as python-ct (`3.15.1`, and `3.15.1t` where threads are measured). Every output is run.
-3.15 features used: UTF-8 default (5.4), `frozendict` (3.8), `sentinel` (3.4), unpacking in
-comprehensions (4.6), `lazy import` (7.3), free-threaded build (10.5–10.6).
+Same pin as python-ct: CPython `3.15.1`, and `3.15.1t` where threads are measured. Every output is
+run. 3.15 features used: UTF-8 default (5.4), `frozendict` (3.8), `sentinel` (3.4), unpacking in
+comprehensions (4.6), `lazy import` (7.3), free-threaded build (10.5–10.6). The app is standard
+library only; mypy, pytest and ruff are dev tools from Course 9.
 
 ## The app: `expense-tracker`
 
 One name everywhere: the folder, the project in `pyproject.toml` and the command are
 `expense-tracker`; the importable package is `expense_tracker` (Python names cannot contain `-`,
-taught in 7.2 and 11.2).
-
-Ana's spending. Data is synthetic and owned: `data/bank/bank-2026-MM.csv` exports
-(`date,description,amount,currency`) and `data/budgets.json` (food, transport, rent, bills,
-shopping, fun). The bad rows are real: `12,50` as an amount, a missing date, a duplicate
-transaction, a refund (negative), a file saved as Latin-1 (`Café Müller`), and EUR spending that needs a rate.
-Money is a `Decimal` from its first appearance, then a `Money` object (Course 8).
+taught in 7.2 and 11.2). Money is a `Decimal` from its first appearance, then a `Money` object
+(Course 8).
 
 ```
 expense-tracker/
@@ -81,21 +75,26 @@ expense-tracker/
 | 10 Connect | fetch exchange rates concurrently; measured |
 | 11 Ship | configured, installable, and served as a web API |
 
+## The data
+
+Ana's spending. Synthetic and owned: `data/bank/bank-2026-MM.csv` exports
+(`date,description,amount,currency`) and `data/budgets.json` (food, transport, rent, bills,
+shopping, fun). The bad rows are real: `12,50` as an amount, a missing date, a duplicate
+transaction, a refund (negative), a file saved as Latin-1 (`Café Müller`), and EUR spending that
+needs a rate.
+
+## Frames
+
+The IDE frame for every step section; a concept frame for Course 1 and each ◆ full scene, which
+carries the real output inside the scene as a `code` node imported from a lab. Side pane = the
+diagram (every IDE section carries one); ◆ side pane = a small picture of the code on screen (names →
+objects, a refcount, a frame), so the proof (the REPL output) stays visible beside it; ◆ full scene
+= e.g. how Python runs a file. The next section returns to the IDE. If a detour's diagram cannot
+fit the side pane at ≥ 24px body text in the 4K frame, it is a full scene; when in doubt, full scene.
+On IDE frame v2 (Decision 6) the side pane is TITLED with the section's mental model and holds one
+diagram and at most one table.
+
 ## The courses
-
-Side pane = the diagram (every IDE section carries one). On IDE frame v2 (Decision 5) the side
-pane is TITLED with the section's mental model and holds one diagram and at most one table; the
-proof (the REPL, the run) is in the terminal beside it. Detours are marked ◆, in two kinds:
-
-- **◆ side pane:** a small picture of the code on screen (names → objects, a refcount, a frame).
-  It stays in the IDE frame, so the proof (the REPL output) stays visible beside it.
-- **◆ full scene:** a canonical big picture that needs the whole 16:9 frame (how Python runs a file,
-  for example). It is its own section with a concept frame, never squeezed into the side pane, and
-  carries the real output inside the scene as a `code` node imported from a lab, so it stays proof.
-  The next section returns to the IDE.
-
-Rule: if a detour's diagram cannot fit the side pane at ≥ 24px body text in the 4K frame, it is a
-full scene. When in doubt, full scene.
 
 **1. `intro` · Python, and what we'll build · 2**
 
@@ -226,21 +225,6 @@ The rate API is a stdlib `http.server` stub the step starts locally: replays sta
 | 4 | The finished app | the whole tree | the app map, every class on its stage |
 | 5 | Where next | FastAPI/Django (web), pandas/PySpark (data, the Spark series) | each part of the app → its tool at scale |
 
-## How a section teaches
-
-Objective → mental model (side pane) → the code and its real result → a failure or alternative →
-bridge. One step per section; failure is its own step with a real traceback. Narration explains,
-never reads code aloud. A detour ◆ is ≤ 120 s and returns to the app.
-
-## Build order
-
-1. Owner review of this plan.
-2. Infra: port python-ct's frame template (`ide.ts`), `spine.py`, checks and registry; an app-map
-   scene; data files.
-3. Course 2 as the pilot → owner review.
-4. Courses 1, 3–11 one at a time, each reviewed on its rendered routes, then narrated.
-5. Record all 11 courses → assemble and publish the one video.
-
 ## Decisions
 
 1. App: `expense-tracker` (package `expense_tracker`), a personal expense tracker.
@@ -248,7 +232,10 @@ never reads code aloud. A detour ◆ is ≤ 120 s and returns to the app.
 3. One video, one continuous story: 11 courses, no parts or acts.
 4. Background is just-in-time (◆ detours), never a front-loaded course: side pane when it is a
    small picture of the code on screen, a full scene when it is a canonical big picture.
-5. IDE frame v2 (2026-11-06): every course moves to graphl-flow 0.11's shared frame (1344 × 756,
+5. Infra ported from python-ct: its frame template (`ide.ts`), `spine.py`, checks and registry; plus
+   an app-map scene and the data files. Course 2 was the pilot; Courses 1, 3–11 followed one at a
+   time, each reviewed on its rendered routes, then narrated.
+6. IDE frame v2 (2026-11-06): every course moves to graphl-flow 0.11's shared frame (1344 × 756,
    one fit; explorer | editor over terminal | titled side pane; a `code` and a `run` variant, the
    terminal 72 columns), course by course, Course 3 first as the pilot. The spine is unchanged: the
    80-column sessions are wrapped at draw time. Narration changes only where it walks a removed
