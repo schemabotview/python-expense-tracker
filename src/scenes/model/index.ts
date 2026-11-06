@@ -1,6 +1,6 @@
 import type { SceneModel } from '@graphlearning/graphl-flow'
-import { ideFrame, linesFrom } from '../ide'
-import { view } from '../fold'
+import { lineOf, linesFrom } from '../ide'
+import { ideFrame2 } from '../frame'
 import { names, obj } from '../mem'
 import { pkgTree } from '../pkgtree'
 import m1 from '../../../spine/model/01-classes/project/expense_tracker/models.py?raw'
@@ -22,17 +22,18 @@ import s8 from '../../../spine/model/08-protocols/session.txt?raw'
 import t9 from '../../../spine/model/09-context-managers/project/expense_tracker/store.py?raw'
 import s9 from '../../../spine/model/09-context-managers/session.txt?raw'
 
-// Course 8 — model it with classes. Values are the sessions' output.
+// Course 8 — model it with classes, on IDE frame v2 (each side pane: the section's mental model as
+// its title, one diagram, at most one table). Values are the sessions' output.
 const MODS = ['__init__.py', '__main__.py', 'bank.py', 'categorise.py', 'cli.py', 'models.py', 'money.py', 'report.py', 'store.py']
 const MODS7 = ['__init__.py', '__main__.py', 'bank.py', 'categorise.py', 'cli.py', 'errors.py', 'models.py', 'money.py', 'report.py', 'store.py']
 const at = (f: string) => `expense_tracker/${f}`
 
 // §1 — classes: the instance holds the data, the class holds the code.
-const classes1 = ideFrame({
-  tree: pkgTree(MODS, 'models.py', ['models.py']), editor: { file: at('models.py'), code: m1, highlight: linesFrom(m1, 'class Expense:', 'self.category = category') }, session: s1,
+const classes1 = ideFrame2({
+  model: 'The instance holds data; the class holds code', tree: pkgTree(MODS, 'models.py', ['models.py']), editor: { file: at('models.py'), code: m1, highlight: linesFrom(m1, 'class Expense:', 'self.category = category') }, session: s1,
   side: [
     {
-      type: 'group', id: 'inst', title: 'e = Expense("2026-10-01", "Café Lumen", 4.50, "food")', icon: 'memory', tone: 'ingest', dir: 'row', children: [
+      type: 'group', id: 'inst', title: 'e = Expense(…)', icon: 'memory', tone: 'ingest', dir: 'row', children: [
         names('n', ['e']),
         { type: 'group', id: 'objs', bare: true, children: [
           obj('instance', 'an Expense: its own attributes', [['date', "'2026-10-01'"], ['description', "'Café Lumen'"], ['amount', '4.5'], ['category', "'food'"]], 'store'),
@@ -41,72 +42,49 @@ const classes1 = ideFrame({
       ],
     },
     {
-      type: 'table', id: 'repl', title: 'The REPL', tone: 'consume', columns: ['asked', 'answer'], rows: [
-        ['e', '<…Expense object at 0x…>'], { id: 'eq', cells: ['e == Expense(… same …)', 'False'], tone: 'consume' },
-      ],
-    },
-    {
       type: 'table', id: 'was', title: 'A tuple, then an Expense', tone: 'ingest', columns: ['the code said', 'now says'], rows: [['e[2]', 'e.amount'], ['e[3] == category', 'e.category == category']],
     },
-    { type: 'item', id: 'cap', title: 'self', icon: 'user', tone: 'ingest', bullets: ['the object the method was called on', 'self.amount: this expense\'s amount'] },
-    { type: 'note', id: 'c-note', tone: 'consume', text: 'Two problems the next section fixes: printing an Expense shows an address, and two equal expenses are not ==.' },
   ],
   edges: [{ from: 'n.e', to: 'instance' }, { from: 'instance', to: 'cls', label: 'its class' }],
 })
 
 // §2 — dataclasses: what @dataclass writes for you.
-const dc2 = ideFrame({
-  tree: pkgTree(MODS, 'models.py'), editor: { file: at('models.py'), code: m2, highlight: linesFrom(m2, '@dataclass', 'category: str') }, session: s2,
+const dc2 = ideFrame2({
+  model: '@dataclass writes the methods from the fields', tree: pkgTree(MODS, 'models.py'), editor: { file: at('models.py'), code: m2, highlight: linesFrom(m2, '@dataclass', 'category: str') }, session: s2,
   side: [
     {
-      type: 'group', id: 'gen', title: '@dataclass reads the annotations…', icon: 'code', tone: 'ingest', dir: 'row', children: [
+      type: 'group', id: 'gen', title: '@dataclass reads the annotations…', icon: 'code', tone: 'ingest', children: [
         { type: 'table', id: 'fields', title: 'fields', rows: [['date: str'], ['description: str'], ['amount: Decimal'], ['category: str']] },
         { type: 'table', id: 'methods', title: '…and writes the methods', tone: 'store', rows: [{ id: 'init', cells: ['__init__(self, date, …)'] }, { id: 'repr', cells: ['__repr__: Expense(date=…)'] }, { id: 'eq', cells: ['__eq__: field by field'] }] },
       ],
     },
-    {
-      type: 'table', id: 'repl', title: 'The REPL, again', tone: 'store', columns: ['asked', 'answer'], rows: [
-        ['e', "Expense(date='2026-10-01', …, amount=4.5, …)"], { id: 'eq2', cells: ['e == Expense(… same …)', 'True'], tone: 'store' },
-      ],
-    },
-    { type: 'item', id: 'cap', title: 'Annotations', icon: 'code', tone: 'ingest', bullets: ['name: type declares a field', 'Python does not check them (Course 9 does)'] },
-    { type: 'table', id: 'top', title: 'top: unchanged', tone: 'store', rows: [['2026-10-04 Train to Porto 68.40 transport'], ['2026-10-05 Concert tickets 64.00 fun']] },
     { type: 'table', id: 'opts', title: 'Options used later', tone: 'ingest', columns: ['@dataclass(…)', 'adds'], rows: [['frozen=True', 'no changes after creation'], ['order=True', '<, > by the fields']] },
-    { type: 'note', id: 'd-note', tone: 'ingest', text: 'Six lines replace a hand-written class, and the app ran top unchanged: nothing outside models.py noticed.' },
   ],
   edges: [{ from: 'fields', to: 'methods', label: 'generates' }],
 })
 
 // §3 — Enum: the categories that exist.
-const enum3 = ideFrame({
-  tree: pkgTree(MODS, 'models.py'), editor: { file: at('models.py'), code: m3, ...view(m3, 'class Category(StrEnum):', undefined, 0), highlight: linesFrom(m3, 'class Category(StrEnum):', 'OTHER = "other"') }, session: s3,
+const enum3 = ideFrame2({
+  model: 'A fixed set of members, and nothing else', tree: pkgTree(MODS, 'models.py'), editor: { file: at('models.py'), code: m3, highlight: linesFrom(m3, 'FOOD = "food"', 'OTHER = "other"') }, session: s3,
   side: [
     {
-      type: 'group', id: 'members', title: 'Category: seven members, no more', icon: 'filter', tone: 'ingest', dir: 'row', children: [
+      type: 'group', id: 'members', title: 'Category: seven members', icon: 'filter', tone: 'ingest', dir: 'row', children: [
         { type: 'table', id: 'texts', title: 'text', rows: [{ id: 't-food', cells: ['"food"'] }, { id: 't-fun', cells: ['"fun"'] }, { id: 't-fod', cells: ['"fod"'] }] },
         { type: 'table', id: 'cats', title: 'Category(text)', rows: [{ id: 'c-food', cells: ['Category.FOOD'], tone: 'store' }, { id: 'c-fun', cells: ['Category.FUN'], tone: 'store' }, { id: 'c-none', cells: ['ValueError: not one'], tone: 'consume' }] },
       ],
     },
     {
-      type: 'table', id: 'repl', title: 'The REPL', tone: 'ingest', columns: ['asked', 'answer'], rows: [
-        ['Category("food"), Category.FOOD == "food"', '(<Category.FOOD: …>, True)'], ['"fod" in Category', 'False'],
-      ],
-    },
-    { type: 'table', id: 'cli', title: 'add 3.20 fod bakery', tone: 'consume', rows: [["error: argument category: invalid Category value: 'fod'"]] },
-    {
       type: 'table', id: 'used', title: 'Where Category is used now', tone: 'store', columns: ['module', 'how'], rows: [
-        ['categorise', 'RULES map patterns to members'], ['report', 'BUDGETS keyed by members'], ['cli', 'add: type=Category, choices'], ['store', 'Category(r["category"]) on load'],
+        ['categorise', 'RULES → members'], ['report', 'BUDGETS keys'], ['cli', 'type=Category'], ['store', 'Category(…) on load'],
       ],
     },
-    { type: 'item', id: 'cap', title: 'is, not ==', icon: 'search', tone: 'ingest', bullets: ['each member is one object', 'category is Category.OTHER'] },
-    { type: 'note', id: 'e-note', tone: 'store', text: 'A StrEnum member IS a str, so JSON, f-strings and == "food" keep working. A typo is now an error, not a new category.' },
   ],
   edges: [{ from: 'texts.t-food', to: 'cats.c-food' }, { from: 'texts.t-fun', to: 'cats.c-fun' }, { from: 'texts.t-fod', to: 'cats.c-none' }],
 })
 
 // §4 — properties and invariants.
-const prop4 = ideFrame({
-  tree: pkgTree(MODS, 'models.py'), editor: { file: at('models.py'), code: m4, ...view(m4, 'class Expense:', undefined, 0), highlight: linesFrom(m4, 'def __post_init__', 'return self.date[:7]') }, session: s4,
+const prop4 = ideFrame2({
+  model: 'Checked once, where it is made', tree: pkgTree(MODS, 'models.py'), editor: { file: at('models.py'), code: m4, highlight: linesFrom(m4, 'def __post_init__', 'return self.date[:7]') }, session: s4,
   side: [
     {
       type: 'group', id: 'make', title: 'Expense(…) is made', icon: 'workflow', tone: 'ingest', children: [
@@ -119,18 +97,16 @@ const prop4 = ideFrame({
       ],
     },
     {
-      type: 'table', id: 'prop', title: '@property: a method read like an attribute', tone: 'store', columns: ['written', 'runs'], rows: [['e.month', 'self.date[:7]'], ['for 2026-10-16', "'2026-10'"]],
+      type: 'table', id: 'prop', title: '@property: read like an attribute', tone: 'store', columns: ['written', 'runs'], rows: [['e.month', 'self.date[:7]'], ['for 2026-10-16', "'2026-10'"]],
     },
-    { type: 'table', id: 'repl', title: 'The REPL', tone: 'consume', columns: ['typed', 'answer'], rows: [['Expense(…, Decimal("-3"), …)', 'InvalidAmount'], ['its message', 'must be more than zero: -3']] },
-    { type: 'item', id: 'cap', title: 'An invariant', icon: 'shield', tone: 'store', bullets: ['true of every object, always', 'checked once, where it is made'] },
-    { type: 'note', id: 'p-note', tone: 'ingest', text: 'report now asks expense.month == month. No caller anywhere can build an expense of −3.' },
   ],
   edges: [{ from: 'init', to: 'post' }, { from: 'post', to: 'ok', label: 'yes' }, { from: 'post', to: 'bad', label: 'no' }],
 })
 
 // §5 — a value object: Money.
-const money5 = ideFrame({
-  tree: pkgTree(MODS, 'money.py'), editor: { file: at('money.py'), code: y5, ...view(y5, '@dataclass(frozen=True', undefined, 0), highlight: linesFrom(y5, '@dataclass(frozen=True', 'return Money(self.amount') }, session: s5,
+const money5 = ideFrame2({
+  model: 'A value object: a + b makes a new one', tree: pkgTree(MODS, 'money.py'), editor: { file: at('money.py'), code: y5, highlight: [lineOf(y5, '@dataclass(frozen=True'), ...linesFrom(y5, 'def __add__', 'return Money(self.amount')],
+    show: [[lineOf(y5, '@dataclass(frozen=True'), lineOf(y5, '@dataclass(frozen=True')], [lineOf(y5, 'def __add__'), lineOf(y5, 'return Money(self.amount')]] }, session: s5,
   side: [
     {
       type: 'group', id: 'add', title: 'a + b makes a NEW Money', icon: 'memory', tone: 'ingest', dir: 'row', children: [
@@ -143,17 +119,16 @@ const money5 = ideFrame({
         ['__add__', 'a + b, one currency only'], ['__radd__', 'sum(…), which starts at 0'], ['__format__', 'f"{spent:>9.2f}"'], ['frozen=True', 'hashable; never changes'],
       ],
     },
-    { type: 'table', id: 'eur', title: '4.50 GBP + 48.00 EUR', tone: 'consume', rows: [['ValueError: cannot add EUR to GBP']] },
-    { type: 'table', id: 'repl', title: 'The REPL', tone: 'store', columns: ['typed', 'answer'], rows: [['4.50 + 12.99', "Money(amount=Decimal('17.49'), currency='GBP')"]] },
-    { type: 'item', id: 'cap', title: 'A value object', icon: 'card', tone: 'ingest', bullets: ['equal when the values are equal', 'never changes: safe to share and hash'] },
-    { type: 'note', id: 'v-note', tone: 'store', text: 'A value object is equal to any other with the same value, and can never change. Expense.amount is now a Money.' },
   ],
   edges: [{ from: 'a', to: 'sum' }, { from: 'b', to: 'sum' }],
 })
 
 // §6 — a container: Budget, through its dunders.
-const budget6 = ideFrame({
-  tree: pkgTree(MODS, 'report.py'), editor: { file: at('report.py'), code: r6, ...view(r6, 'class Budget:', undefined, 0), highlight: linesFrom(r6, 'class Budget:', 'return self._limits[category]') }, session: s6,
+const DUNDERS = ['__len__', '__iter__', '__contains__', '__getitem__']
+const budget6 = ideFrame2({
+  model: 'Syntax calls a dunder method', tree: pkgTree(MODS, 'report.py'), editor: { file: at('report.py'), code: r6, highlight: DUNDERS.map((d) => lineOf(r6, `def ${d}(`)),
+    // the four methods the diagram maps, one row each
+    show: DUNDERS.map((d): [number, number] => [lineOf(r6, `def ${d}(`), lineOf(r6, `def ${d}(`)]) }, session: s6,
   side: [
     {
       type: 'group', id: 'map', title: 'Python syntax → Budget method', icon: 'code', tone: 'ingest', dir: 'row', children: [
@@ -161,22 +136,14 @@ const budget6 = ideFrame({
         { type: 'table', id: 'dunder', title: 'Python calls', tone: 'store', rows: [{ id: 'd-len', cells: ['__len__'] }, { id: 'd-iter', cells: ['__iter__'] }, { id: 'd-in', cells: ['__contains__'] }, { id: 'd-get', cells: ['__getitem__'] }] },
       ],
     },
-    {
-      type: 'table', id: 'repl', title: 'The REPL', tone: 'ingest', columns: ['asked', 'answer'], rows: [
-        ['len, FUN in, OTHER in', '(6, True, False)'], ['BUDGET[Category.FUN]', "Decimal('60')"], ['[str(c) for c in BUDGET]', "['food', 'transport', …]"],
-      ],
-    },
     { type: 'table', id: 'uses', title: 'report() did not change', tone: 'store', columns: ['code', 'calls'], rows: [['sorted(BUDGET, key=…)', '__iter__'], ['BUDGET[category]', '__getitem__']] },
-    { type: 'item', id: 'cap', title: 'Why a class', icon: 'boxes', tone: 'ingest', bullets: ['the limits stay private: _limits', 'budget rules get a home later'] },
-    { type: 'item', id: 'cap2', title: 'The protocol', icon: 'code', tone: 'store', bullets: ['define the dunders', 'get the syntax'] },
-    { type: 'note', id: 'b-note', tone: 'ingest', text: 'Implement the protocol and the class behaves like a built-in container: the report code reads exactly as it did with a dict.' },
   ],
   edges: [{ from: 'syntax.len', to: 'dunder.d-len' }, { from: 'syntax.for', to: 'dunder.d-iter' }, { from: 'syntax.in', to: 'dunder.d-in' }, { from: 'syntax.get', to: 'dunder.d-get' }],
 })
 
 // §7 — inheritance: one family of errors.
-const inherit7 = ideFrame({
-  tree: pkgTree(MODS7, 'errors.py', ['errors.py']), editor: { file: at('errors.py'), code: e7, highlight: linesFrom(e7, 'class UnknownCategory', 'self.text = text') }, session: s7,
+const inherit7 = ideFrame2({
+  model: 'One family: catch the parent, catch them all', tree: pkgTree(MODS7, 'errors.py', ['errors.py']), editor: { file: at('errors.py'), code: e7, highlight: linesFrom(e7, 'class UnknownCategory', 'self.text = text') }, session: s7,
   side: [
     {
       type: 'group', id: 'tree', title: 'The family', icon: 'workflow', tone: 'ingest', children: [
@@ -190,18 +157,16 @@ const inherit7 = ideFrame({
     },
     {
       type: 'table', id: 'runs', title: 'add, three times', tone: 'ingest', columns: ['typed', 'answer'], rows: [
-        { id: 'fod', cells: ['add 3.20 fod bakery', "unknown category: 'fod'"], tone: 'consume' }, { id: 'comma', cells: ['add 12,50 food', "not a number: '12,50'"], tone: 'consume' }, { id: 'ok', cells: ['add 3.20 FOOD bakery', 'added 3.20 GBP to food'], tone: 'store' },
+        { id: 'fod', cells: ['add 3.20 fod bakery', 'unknown category'], tone: 'consume' }, { id: 'comma', cells: ['add 12,50 food', 'not a number'], tone: 'consume' }, { id: 'ok', cells: ['add 3.20 FOOD bakery', 'added'], tone: 'store' },
       ],
     },
-    { type: 'table', id: 'mro', title: 'InvalidAmount.__mro__: the lookup order', tone: 'store', rows: [['InvalidAmount → TrackerError → ValueError'], ['→ Exception → BaseException → object']] },
-    { type: 'item', id: 'cap', title: 'One except for the family', icon: 'shield', tone: 'ingest', bullets: ['except TrackerError catches all three', 'super() runs the parent\'s method'] },
   ],
   edges: [{ from: 'kids', to: 'base', label: 'each is a' }],
 })
 
 // §8 — protocols and polymorphism: two stores, one interface.
-const proto8 = ideFrame({
-  tree: pkgTree(MODS, 'store.py'), editor: { file: at('store.py'), code: t8, ...view(t8, 'class Store(Protocol):', undefined, 0), highlight: linesFrom(t8, 'class Store(Protocol):', 'def save(self, expenses): ...') }, session: s8,
+const proto8 = ideFrame2({
+  model: 'Two stores, one shape', tree: pkgTree(MODS, 'store.py'), editor: { file: at('store.py'), code: t8, highlight: linesFrom(t8, 'class Store(Protocol):', 'def save(self, expenses): ...') }, session: s8,
   side: [
     {
       type: 'group', id: 'shape', title: 'Store: load() and save(expenses)', icon: 'database', tone: 'ingest', children: [
@@ -215,17 +180,17 @@ const proto8 = ideFrame({
     {
       type: 'table', id: 'duck', title: 'Neither inherits from Store', tone: 'store', columns: ['', 'JsonStore', 'SqliteStore'], rows: [['load()', 'reads JSON', 'SELECT'], ['save()', 'writes JSON', 'DELETE + INSERT']],
     },
-    { type: 'table', id: 'top', title: '--store sqlite top', tone: 'ingest', rows: [['2026-09-20 TESCO STORES 2041 41.10 GBP food'], ['2026-09-15 THAMES WATER 32.40 GBP bills']] },
-    { type: 'table', id: 'imp', title: '--store sqlite import', tone: 'ingest', rows: [['the same 5 rows rejected'], ['12 imported, into data/expenses.db']] },
-    { type: 'item', id: 'cap', title: 'Duck typing', icon: 'database', tone: 'store', bullets: ['if it loads and saves like a store', 'it is a store'] },
-    { type: 'note', id: 'p-note', tone: 'ingest', text: 'A Protocol describes a shape: any object with these methods fits. cli calls load and save without knowing which store it holds.' },
   ],
   edges: [{ from: 'cli', to: 'json', dashed: true }, { from: 'cli', to: 'sqlite' }],
 })
 
 // §9 — context managers: commit, or roll back.
-const ctx9 = ideFrame({
-  tree: pkgTree(MODS, 'store.py'), editor: { file: at('store.py'), code: t9, ...view(t9, 'class SqliteStore:', 'return False    # an error', 0), highlight: linesFrom(t9, 'self.db = sqlite3.connect', 'return False    # an error') }, session: s9,
+// SqliteStore's own __enter__ and __exit__ (Store and JsonStore define them first).
+const SQ_ENTER = lineOf(t9, 'def __enter__', lineOf(t9, 'class SqliteStore'))
+const SQ_EXIT = lineOf(t9, 'def __exit__', lineOf(t9, 'class SqliteStore'))
+const ctx9 = ideFrame2({
+  model: 'with: commit, or roll back', tree: pkgTree(MODS, 'store.py'), editor: { file: at('store.py'), code: t9, highlight: [SQ_ENTER, ...Array.from({ length: lineOf(t9, 'self.db.rollback()') - SQ_EXIT + 1 }, (_, i) => SQ_EXIT + i)],
+    show: [[SQ_ENTER, SQ_ENTER], [SQ_EXIT, lineOf(t9, 'self.db.rollback()')]] }, session: s9,
   side: [
     {
       type: 'group', id: 'paths', title: 'with SqliteStore() as s:', icon: 'lock', tone: 'ingest', children: [
@@ -237,14 +202,7 @@ const ctx9 = ideFrame({
         ] },
       ],
     },
-    {
-      type: 'table', id: 'repl', title: 'The REPL', tone: 'ingest', columns: ['asked', 'answer'], rows: [
-        ['len(s.load()), before', '12'], { id: 'fail', cells: ['save([]), then 1 / 0', 'rolled back'], tone: 'consume' }, { id: 'after', cells: ['len(s.load()), after', '12: nothing lost'], tone: 'store' },
-      ],
-    },
-    { type: 'table', id: 'exit', title: '__exit__(self, kind, error, traceback)', tone: 'ingest', columns: ['when', 'error is'], rows: [['the block finished', 'None: commit'], ['the block raised', 'the exception: roll back']] },
-    { type: 'item', id: 'cap', title: 'Also context managers', icon: 'lock', tone: 'ingest', bullets: ['open(): closes the file', 'suppress(Error): swallows one kind'] },
-    { type: 'note', id: 'c-note', tone: 'store', text: 'Any class with __enter__ and __exit__ works with with. __exit__ returns False, so the error still reaches suppress, outside.' },
+    { type: 'table', id: 'exit', title: '__exit__(self, kind, error, tb)', tone: 'ingest', columns: ['the block', 'error is', 'so'], rows: [['finished', 'None', 'commit'], ['raised', 'the exception', 'roll back']] },
   ],
   edges: [{ from: 'enter', to: 'body' }, { from: 'body', to: 'commit' }, { from: 'body', to: 'rollback' }],
 })
