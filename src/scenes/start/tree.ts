@@ -18,3 +18,9 @@ export const project = (main: 'new' | 'active'): TreeEntry[] => [
   venvClosed,
   { name: 'main.py', state: main === 'new' ? 'new' : 'active' },
 ]
+
+// IDE frame v2 (compact 175px explorer): the venv is one muted folder, without the note.
+export const project2 = (main: 'new' | 'active'): TreeEntry[] => [
+  { name: '.venv', folder: true, state: 'muted' },
+  { name: 'main.py', state: main === 'new' ? 'new' : 'active' },
+]
