@@ -11,9 +11,8 @@ script to a tested, packaged CLI and web API, in real, executed code. A **sectio
 **`COURSE-PLAN.md` is the source of truth**: courses, sections, the app's growth, each side-pane
 diagram, and the packaging (one video). Author from it; change it first, never drift from it.
 
-Engine `@graphlearning/graphl-flow` (^0.3.0), shell `@graphlearning/shell` (^1.0.1), both published
-and pinned. Shell 1.0.2 (peer `^0.3.0`) is not on npm yet, so `package.json` `overrides` lets 1.0.1
-take engine 0.3.0 (no API change); when 1.0.2 is published, pin `^1.0.2` and drop the override. Sister repo: **python-ct**, which has the same course design on a data pipeline.
+Engine `@graphlearning/graphl-flow` 0.11.0 and shell `@graphlearning/shell` 1.1.0, pinned exactly; no
+`overrides`. Sister repo: **python-ct**, which has the same course design on a data pipeline.
 Port its infra; do not reinvent it.
 
 ## Status
@@ -22,6 +21,11 @@ All 11 courses (72 sections) authored 2026-10-26: replayed on 3.15.1 (70 spine s
 at 4K, checked, and looked at. Narrated and recorded 2026-10-27: all 72 wavs in, every course
 captured at 3840x2160, and combined into the single YouTube film (`npm run film` -> 1 h 50 min).
 Awaiting the owner's review of the whole course.
+
+**2026-11-06: moving to IDE frame v2** (COURSE-PLAN Decision 5). Course 3 is ported as the pilot:
+scenes on v2, five narrations edited (names-and-objects, numbers-and-decimal, strings,
+tuples-and-unpacking, sets-and-frozendict). Their wavs predate the edit and must be regenerated;
+then Course 3 is re-recorded. Every course needs re-recording once ported (the frame changes).
 
 | # | Course | Sections | Status |
 | --- | --- | --- | --- |
@@ -68,14 +72,26 @@ failure through the app, or through a short frame of our own code.
 
 ## Frames
 
-Port python-ct's IDE template unchanged: explorer | editor (80 × 23) over terminal (13 lines) |
-fixed side pane. **Every IDE side pane carries a diagram** (memory, stack, flow, class, plot or
-result table), not a bullet list. No edges between panes. A detour (◆) is a side-pane diagram when it
-pictures the code on screen, and a full concept scene (its own section, real output inside it) when
-it is a canonical big picture that cannot fit the side pane at ≥ 24px; see `COURSE-PLAN.md`. Concept scenes are authored wide for 16:9.
-python-ct's authoring notes apply (no obstacle avoidance, valid icon keys). On engine 0.3 a fan-in of
-3+ arrows no longer flips a head, but heads on one face must sit ≥ 10px apart (check-render fails it):
-aim a fan-in at a TALL node.
+**IDE frame v2 is the target (COURSE-PLAN Decision 5), migrating course by course.** `src/scenes/
+frame.ts` `ideFrame2` builds graphl-flow 0.11's shared frame: compact explorer | editor (`code` 18
+rows / `run` 9) over terminal (8 / 17 rows, 72 columns) | side pane TITLED with the section's mental
+model (`model`). It picks the variant from the transcript, windows the editor around the highlighted
+lines, wraps the 80-column sessions at draw time (the spine is untouched), marks tracebacks, and
+THROWS (naming the scene) when a transcript or a highlight does not fit. Its workbench id is
+`ide-bench`; v1's (`ide.ts` `ideFrame`) is `workbench`, and the checks hold each kind to its own rules:
+
+| | v1 (`ide.ts`, courses not yet ported) | v2 (`frame.ts`) |
+|---|---|---|
+| side pane | untitled, ≥ one edge/plot/table, captions ≤ 3 bullets, filled ≥ 2/3 | titled; one diagram (edges or a plot), ≤ 1 table outside it, no bullets, filled ≥ 1/2 |
+| fit | one fit across v1 frames, every pane at the same pixels | one fit across v2 frames, explorer and side pane at the same pixels |
+
+Ported: Course 3 `hold` (the pilot). The v2 explorer is 175px: the venv is one muted folder,
+without v1's note. **Every IDE side pane carries a diagram**, never a bullet list. No edges between
+panes. A detour (◆) is a side-pane diagram when it pictures the code on screen, and a full concept
+scene (its own section, real output inside it) when it is a canonical big picture that cannot fit the
+side pane at ≥ 24px; see `COURSE-PLAN.md`. python-ct's authoring notes apply (no obstacle avoidance,
+valid icon keys). Heads on one face must sit ≥ 10px apart (check-render fails it): aim a fan-in at a
+TALL node. `node scripts/check-render.mjs <course>` checks one course.
 
 ## Checks, before handing over
 

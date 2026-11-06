@@ -83,7 +83,9 @@ expense-tracker/
 
 ## The courses
 
-Side pane = the diagram (every IDE section carries one). Detours are marked ◆, in two kinds:
+Side pane = the diagram (every IDE section carries one). On IDE frame v2 (Decision 5) the side
+pane is TITLED with the section's mental model and holds one diagram and at most one table; the
+proof (the REPL, the run) is in the terminal beside it. Detours are marked ◆, in two kinds:
 
 - **◆ side pane:** a small picture of the code on screen (names → objects, a refcount, a frame).
   It stays in the IDE frame, so the proof (the REPL output) stays visible beside it.
@@ -246,3 +248,8 @@ never reads code aloud. A detour ◆ is ≤ 120 s and returns to the app.
 3. One video, one continuous story: 11 courses, no parts or acts.
 4. Background is just-in-time (◆ detours), never a front-loaded course: side pane when it is a
    small picture of the code on screen, a full scene when it is a canonical big picture.
+5. IDE frame v2 (2026-11-06): every course moves to graphl-flow 0.11's shared frame (1344 × 756,
+   one fit; explorer | editor over terminal | titled side pane; a `code` and a `run` variant, the
+   terminal 72 columns), course by course, Course 3 first as the pilot. The spine is unchanged: the
+   80-column sessions are wrapped at draw time. Narration changes only where it walks a removed
+   side-pane element, and only those sections get new wavs.
