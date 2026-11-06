@@ -253,3 +253,8 @@ never reads code aloud. A detour ◆ is ≤ 120 s and returns to the app.
    terminal 72 columns), course by course, Course 3 first as the pilot. The spine is unchanged: the
    80-column sessions are wrapped at draw time. Narration changes only where it walks a removed
    side-pane element, and only those sections get new wavs.
+   Done 2026-11-06: all 64 IDE sections on v2 (the 8 concept scenes are unchanged). 17 narrations
+   were edited and need new wavs: `start` main-py, the-repl, a-name-error; `hold` names-and-objects,
+   numbers-and-decimal, strings, tuples-and-unpacking, sets-and-frozendict; `decide` expressions,
+   comprehensions; `save` files-and-with, encodings; `report` regular-expressions, recurring-bills;
+   `model` classes, protocols; `connect` asyncio. Every course is re-recorded: the frame changed.

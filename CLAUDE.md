@@ -22,14 +22,14 @@ at 4K, checked, and looked at. Narrated and recorded 2026-10-27: all 72 wavs in,
 captured at 3840x2160, and combined into the single YouTube film (`npm run film` -> 1 h 50 min).
 Awaiting the owner's review of the whole course.
 
-**2026-11-06: moving to IDE frame v2** (COURSE-PLAN Decision 5). Course 3 is ported as the pilot:
-scenes on v2, five narrations edited (names-and-objects, numbers-and-decimal, strings,
-tuples-and-unpacking, sets-and-frozendict). Their wavs predate the edit and must be regenerated;
-then Course 3 is re-recorded. Every course needs re-recording once ported (the frame changes).
+**2026-11-06: ported to IDE frame v2** (COURSE-PLAN Decision 5). All 64 IDE sections, every
+course, are on v2; the 8 concept scenes are unchanged. 17 narrations were edited (listed in
+Decision 5): their wavs predate the edit and must be regenerated. Then every course is re-recorded,
+because the frame changed. The audio and recording columns below describe the v1 recording.
 
 | # | Course | Sections | Status |
 | --- | --- | --- | --- |
-| 1 | `intro` | 2 | authored, narrated, recorded 4K |
+| 1 | `intro` | 2 | authored, narrated, recorded 4K (concept frames: unchanged by v2) |
 | 2 | `start` | 6 | authored, narrated, recorded 4K |
 | 3 | `hold` | 9 | authored, narrated, recorded 4K |
 | 4 | `decide` | 11 | authored, narrated, recorded 4K |
@@ -72,21 +72,27 @@ failure through the app, or through a short frame of our own code.
 
 ## Frames
 
-**IDE frame v2 is the target (COURSE-PLAN Decision 5), migrating course by course.** `src/scenes/
+**Every IDE section is on IDE frame v2 (COURSE-PLAN Decision 5).** `src/scenes/
 frame.ts` `ideFrame2` builds graphl-flow 0.11's shared frame: compact explorer | editor (`code` 18
 rows / `run` 9) over terminal (8 / 17 rows, 72 columns) | side pane TITLED with the section's mental
 model (`model`). It picks the variant from the transcript, windows the editor around the highlighted
 lines, wraps the 80-column sessions at draw time (the spine is untouched), marks tracebacks, and
 THROWS (naming the scene) when a transcript or a highlight does not fit. Its workbench id is
-`ide-bench`; v1's (`ide.ts` `ideFrame`) is `workbench`, and the checks hold each kind to its own rules:
+`ide-bench`; v1's (`ide.ts` `ideFrame`, no longer used by any scene) is `workbench`, and the checks
+still hold each kind to its own rules:
 
 | | v1 (`ide.ts`, courses not yet ported) | v2 (`frame.ts`) |
 |---|---|---|
 | side pane | untitled, ≥ one edge/plot/table, captions ≤ 3 bullets, filled ≥ 2/3 | titled; one diagram (edges or a plot), ≤ 1 table outside it, no bullets, filled ≥ 1/2 |
 | fit | one fit across v1 frames, every pane at the same pixels | one fit across v2 frames, explorer and side pane at the same pixels |
 
-Ported: Course 3 `hold` (the pilot). The v2 explorer is 175px: the venv is one muted folder,
-without v1's note. **Every IDE side pane carries a diagram**, never a bullet list. No edges between
+The v2 explorer is 175px: the venv is one muted folder, without v1's note, and from Course 10 on
+`pkgtree.ts` `folded()` closes every folder that holds nothing active or new, or the tree outgrows
+the frame. A highlight spread over a long file does not fit the 9-row `run` editor: give `show`
+explicit ranges (each skipped run costs a fold row, a line over 71 columns costs two), and anchor
+`lineOf` at the right definition (`lineOf(code, text, from)`) when a name repeats in the file.
+A plot in the side pane is `compact` with `w: SIDE_W - 34`, and its x labels must fit (~6 chars for
+six bars). **Every IDE side pane carries a diagram**, never a bullet list. No edges between
 panes. A detour (◆) is a side-pane diagram when it pictures the code on screen, and a full concept
 scene (its own section, real output inside it) when it is a canonical big picture that cannot fit the
 side pane at ≥ 24px; see `COURSE-PLAN.md`. python-ct's authoring notes apply (no obstacle avoidance,
