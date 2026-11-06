@@ -13,3 +13,9 @@ export function pkgTree(modules: string[], active: string, fresh: string[] = [],
     { name: 'main.py', state: 'muted' },
   ]
 }
+
+/** Close every folder that holds nothing active or new: the explorer shows only where the step works. */
+export function folded(tree: TreeEntry[]): TreeEntry[] {
+  const live = (e: TreeEntry): boolean => e.state === 'active' || e.state === 'new' || (e.children ?? []).some(live)
+  return tree.map((e) => (e.children && !live(e) ? { name: e.name, folder: true, state: e.state } : e.children ? { ...e, children: folded(e.children) } : e))
+}
