@@ -22,22 +22,25 @@ film (`npm run film` → 1:50:32, 72 chapters). Awaiting the owner's review of t
 
 **2026-11-06: ported to IDE frame v2** (COURSE-PLAN Decision 6). All 64 IDE sections, every
 course, are on v2; the 8 concept scenes are unchanged. 17 narrations were edited (listed in
-Decision 6): their wavs predate the edit and must be regenerated. Then every course is re-recorded,
-because the frame changed. The audio and recording columns below describe the v1 recording.
+Decision 6); their wavs were regenerated via Colab.
+
+**2026-11-07: re-recorded on v2.** All 72 wavs match the current narration; every segment was
+rebuilt (the segment cache keys on audio, not layout, so the v1 cache was deleted first), every
+course at 3840×2160 with the 2.4 s loop, and the film rebuilt (`npm run film` → 1:50:26, 72 chapters).
 
 | # | Course | Sections | Status |
 | --- | --- | --- | --- |
-| 1 | `intro` | 2 | authored, narrated, recorded 4K (concept frames: unchanged by v2) |
-| 2 | `start` | 6 | authored, narrated, recorded 4K |
-| 3 | `hold` | 9 | authored, narrated, recorded 4K |
-| 4 | `decide` | 11 | authored, narrated, recorded 4K |
-| 5 | `save` | 6 | authored, narrated, recorded 4K |
-| 6 | `report` | 7 | authored, narrated, recorded 4K |
-| 7 | `command` | 4 | authored, narrated, recorded 4K |
-| 8 | `model` | 9 | authored, narrated, recorded 4K |
-| 9 | `trust` | 6 | authored, narrated, recorded 4K |
-| 10 | `connect` | 7 | authored, narrated, recorded 4K |
-| 11 | `ship` | 5 | authored, narrated, recorded 4K |
+| 1 | `intro` | 2 | authored, narrated, recorded 4K on v2 (concept frames: unchanged by v2) |
+| 2 | `start` | 6 | authored, narrated, recorded 4K on v2 |
+| 3 | `hold` | 9 | authored, narrated, recorded 4K on v2 |
+| 4 | `decide` | 11 | authored, narrated, recorded 4K on v2 |
+| 5 | `save` | 6 | authored, narrated, recorded 4K on v2 |
+| 6 | `report` | 7 | authored, narrated, recorded 4K on v2 |
+| 7 | `command` | 4 | authored, narrated, recorded 4K on v2 |
+| 8 | `model` | 9 | authored, narrated, recorded 4K on v2 |
+| 9 | `trust` | 6 | authored, narrated, recorded 4K on v2 |
+| 10 | `connect` | 7 | authored, narrated, recorded 4K on v2 |
+| 11 | `ship` | 5 | authored, narrated, recorded 4K on v2 |
 
 ## Commands
 
