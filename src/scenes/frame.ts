@@ -1,14 +1,16 @@
 // IDE frame v2 — the shared frame graphl-flow 0.10+ defines (dev/fixtures/studies/ide-frame.ts) and
 // typescript-diagram-engine authors every step section in:
 //
-//   [explorer] | editor (EDITOR_ROWS[v])                     | side pane, TITLED with the section's
-//              | terminal docked under it (the rest)          | mental model: one diagram, ≤ 1 table
+//   [explorer] | editor (the rows the terminal leaves)        | side pane, TITLED with the section's
+//              | terminal docked under it (its transcript)    | mental model: one diagram, ≤ 1 table
 //
 // One 1344 × 756 grid at a 1% margin: every v2 frame lands on ONE fit (check-render asserts it, per
 // frame kind, while courses migrate from the v1 template in ide.ts). Every column is a FIXED width,
 // so content wider than its column overflows (check-render fails it) instead of moving the frame.
-// Two variants of one height: `code`, a tall editor over a short terminal, and `run`, a short editor
-// over a tall terminal, picked from the transcript's length. The terminal is 72 columns: the
+// The editor and the terminal share ROWS rows: the terminal takes exactly its transcript's rows (at
+// least MIN_TERMINAL), the editor the rest, so no row is empty while code is folded. Only the
+// divider between them moves from frame to frame; the explorer and side pane never do (check-render
+// holds them to one place). The terminal is 72 columns: the
 // recorded sessions (80 columns) are wrapped here, at draw time, so the spine is untouched.
 //
 // The workbench's id is `ide-bench` (v1's is `workbench`): that is how the checks tell the two apart.
@@ -27,12 +29,13 @@ export const EXPLORER_W = FULL_W - (WORK_W + GAP + SIDE_W) - GAP
 export const COLS = 72
 const EDITOR_WRAP = 71
 
-export type Variant = 'code' | 'run'
-export const EDITOR_ROWS: Record<Variant, number> = { code: 18, run: 9 }
-const editorH = (v: Variant) => EDITOR_ROWS[v] * ROW + CHROME
-const panelH = (v: Variant) => FRAME_H - GAP - editorH(v)
-/** Terminal rows a variant shows with the explorer beside it. */
-export const terminalRows = (v: Variant) => Math.floor((panelH(v) - CHROME) / ROW)
+/** Rows the editor and terminal share: (FRAME_H − GAP − two panes' chrome) / ROW. */
+export const ROWS = Math.floor((FRAME_H - GAP - 2 * CHROME) / ROW)
+/** The fewest rows a terminal gets, however short its transcript. */
+export const MIN_TERMINAL = 6
+/** The most a terminal can take: the editor keeps at least this many rows. */
+export const MIN_EDITOR = 8
+const editorH = (rows: number) => rows * ROW + CHROME
 
 /**
  * A spine session.txt as terminal rows: `$ cmd` and the REPL's `>>>` / `...` lines are commands, a
@@ -72,11 +75,43 @@ export function windowFor(code: string, first: number, last: number, room: numbe
   return [[a, b]]
 }
 
+/** Rows a set of shown ranges takes: each line (wrapped), plus one fold row per skipped run. */
+function rowsShown(lines: string[], ranges: [number, number][]): number {
+  let rows = 0, next = 1
+  for (const [a, b] of ranges) { if (a > next) rows++; rows += rowsOf(lines, a, b); next = b + 1 }
+  return rows + (next <= lines.length ? 1 : 0)
+}
+
+/** Hand-picked ranges grown, one line at a time, until the editor is full: room is never left empty. */
+export function grow(code: string, ranges: [number, number][], room: number): [number, number][] {
+  const lines = trim(code).split('\n')
+  let r = ranges.map(([a, b]) => [a, b] as [number, number]).sort((x, y) => x[0] - y[0])
+  const merge = (rs: [number, number][]) => rs.reduce<[number, number][]>((out, [a, b]) => {
+    const last = out[out.length - 1]
+    if (last && a <= last[1] + 1) last[1] = Math.max(last[1], b); else out.push([a, b])
+    return out
+  }, [])
+  r = merge(r)
+  for (let grew = true; grew;) {
+    grew = false
+    for (let i = 0; i < r.length; i++) for (const side of [1, 0] as const) {
+      const t = r.map(([a, b]) => [a, b] as [number, number])
+      if (side === 1 && t[i][1] < lines.length) t[i][1]++
+      else if (side === 0 && t[i][0] > 1) t[i][0]--
+      else continue
+      const m = merge(t)
+      if (rowsShown(lines, m) <= room) { r = m; grew = true; break }
+    }
+  }
+  return r
+}
+
 export interface Frame {
   /** The side pane's title: the section's mental model, in a few words. */
   model: string
   tree: TreeEntry[]
-  /** The file in the editor; `highlight` lines are found by text by the caller (lineOf). */
+  /** The file in the editor; `highlight` lines are found by text by the caller (lineOf). `show` is
+   *  used only when the highlighted span does not fit the editor. */
   editor: { file: string; code: string; highlight?: number[]; show?: [number, number][]; lang?: Code['lang'] }
   /** The step's session.txt, raw. */
   session: string
@@ -84,28 +119,29 @@ export interface Frame {
   side: SceneNode[]
   /** Edges between nodes INSIDE the side pane only. */
   edges?: Edge[]
-  variant?: Variant
   project?: string
 }
 
-export function ideFrame2({ model, tree, editor, session, side, edges = [], variant, project = 'expense-tracker' }: Frame): SceneModel {
+export function ideFrame2({ model, tree, editor, session, side, edges = [], project = 'expense-tracker' }: Frame): SceneModel {
   const term = terminal(session)
   const rows = term.split('\n').length
-  const v: Variant = variant ?? (rows > terminalRows('code') ? 'run' : 'code')
-  if (rows > terminalRows(v)) throw new Error(`frame.ts "${model}": the transcript is ${rows} rows, the ${v} terminal shows ${terminalRows(v)}`)
+  if (rows > ROWS - MIN_EDITOR) throw new Error(`frame.ts "${model}": the transcript is ${rows} rows, a terminal shows at most ${ROWS - MIN_EDITOR}`)
+  const editorRows = ROWS - Math.max(MIN_TERMINAL, rows)
   const code = trim(editor.code)
   const hl = editor.highlight ?? []
+  // A window around the highlight when it fits the editor; `show` (hand-picked ranges) only when not.
   let show: [number, number][] | undefined
   try {
-    show = editor.show ?? (hl.length ? windowFor(code, Math.min(...hl), Math.max(...hl), EDITOR_ROWS[v]) : windowFor(code, 1, 1, EDITOR_ROWS[v]))
+    show = hl.length ? windowFor(code, Math.min(...hl), Math.max(...hl), editorRows) : windowFor(code, 1, 1, editorRows)
   } catch (e) {
-    throw new Error(`"${model}": ${(e as Error).message}`)
+    if (!editor.show) throw new Error(`"${model}": ${(e as Error).message}`)
+    show = grow(code, editor.show, editorRows)
   }
   const ed: Code = {
     type: 'code', id: 'editor', filename: editor.file, lang: editor.lang ?? 'python', code, highlight: hl, wrap: true,
-    tone: 'ingest', fill: true, w: WORK_W, minH: editorH(v), ...(show && { show }),
+    tone: 'ingest', fill: true, w: WORK_W, minH: editorH(editorRows), ...(show && { show }),
   }
-  const tm: Code = { type: 'code', id: 'terminal', terminal: true, filename: `terminal — ${project}`, code: term, fill: true, w: WORK_W, minH: panelH(v) }
+  const tm: Code = { type: 'code', id: 'terminal', terminal: true, filename: `terminal — ${project}`, code: term, fill: true, w: WORK_W, minH: FRAME_H - GAP - editorH(editorRows) }
   const explorer: Tree = { type: 'tree', id: 'explorer', title: project, entries: tree, compact: true, fill: true, w: EXPLORER_W, minH: FRAME_H }
   const pane: Group = { type: 'group', id: 'side', title: model, tone: 'ingest', spread: true, w: SIDE_W, minH: FRAME_H, children: side }
   return { dir: 'row', padding: 0.01, nodes: [explorer, { type: 'group', id: 'ide-bench', bare: true, children: [ed, tm] }, pane], edges }

@@ -62,10 +62,12 @@ full-scene detour; `src/scenes/lab.ts` `outputOf` cuts one command's output from
 ## Frames
 
 **Every IDE section is on IDE frame v2 (COURSE-PLAN Decision 6).** `src/scenes/
-frame.ts` `ideFrame2` builds graphl-flow 0.11's shared frame: compact explorer | editor (`code` 18
-rows / `run` 9) over terminal (8 / 17 rows, 72 columns) | side pane TITLED with the section's mental
-model (`model`). It picks the variant from the transcript, windows the editor around the highlighted
-lines, wraps the 80-column sessions at draw time (the spine is untouched), marks tracebacks, and
+frame.ts` `ideFrame2` builds graphl-flow 0.11's shared frame: compact explorer | editor over
+terminal (72 columns) | side pane TITLED with the section's mental model (`model`). Editor and
+terminal share 26 rows: the terminal takes exactly its transcript's rows (at least 6), the editor
+the rest, so only the divider between them moves from frame to frame. It windows the editor around
+the highlighted lines (a hand-picked `show` is used only when that span does not fit, and is then
+grown to fill the editor), wraps the 80-column sessions at draw time (the spine is untouched), marks tracebacks, and
 THROWS (naming the scene) when a transcript or a highlight does not fit. Its workbench id is
 `ide-bench`; v1's (`ide.ts` `ideFrame`, no longer used by any scene) is `workbench`, and the checks
 still hold each kind to its own rules:
@@ -77,7 +79,7 @@ still hold each kind to its own rules:
 
 The v2 explorer is 175px: the venv is one muted folder, without v1's note, and from Course 10 on
 `pkgtree.ts` `folded()` closes every folder that holds nothing active or new, or the tree outgrows
-the frame. A highlight spread over a long file does not fit the 9-row `run` editor: give `show`
+the frame. A highlight spread over a long file may not fit a short editor: give `show`
 explicit ranges (each skipped run costs a fold row, a line over 71 columns costs two), and anchor
 `lineOf` at the right definition (`lineOf(code, text, from)`) when a name repeats in the file.
 A plot in the side pane is `compact` with `w: SIDE_W - 34`, and its x labels must fit (~6 chars for
