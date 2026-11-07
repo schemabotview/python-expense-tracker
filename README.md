@@ -24,7 +24,7 @@ npm run check                              # content + 4K render
 ```
 src/content/<course>/    one file per section + the course index
 src/scenes/<course>/     declarative scenes (never x/y)
-src/scenes/ide.ts        the one IDE frame every IDE section uses
+src/scenes/frame.ts      IDE frame v2, the one frame every IDE section uses
 src/scenes/lab.ts        a lab command's real output, for concept scenes
 spine/<course>/<step>/   the app as real files, one cumulative snapshot per step
 scripts/                 spine.py, check-content, check-render, registry, shots, install-python.sh
